@@ -8,7 +8,7 @@ using FitnessApp.Utilities;
 
 namespace FitnessApp.Droid
 {
-    [Activity(Label = "Fitness App", 
+    [Activity(Label = "Exercise Diet App", 
               Icon = "@drawable/icon", 
               Theme = "@style/MyTheme", 
               MainLauncher = true, 

@@ -53,7 +53,7 @@ namespace FitnessApp.Services
                     "oauth_consumer_key=" + Constants.FATSECRET_API_KEY,
                     "oauth_nonce=" + Nonce(),
                     "oauth_signature_method=HMAC-SHA1",
-                    "oauth_timestamp=" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds(),
+                    "oauth_timestamp=" + new DateTimeOffset(DateTime.UtcNow).ToString(),
                     "oauth_version=1.0"
                 };
         }

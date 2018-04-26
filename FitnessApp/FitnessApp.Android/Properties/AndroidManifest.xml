@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="au.com.franksons.FitnessApp" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="au.com.franksons.ExerciseDietApp" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.VIBRATE" />
-	<application android:label="Fitness App" android:icon="@drawable/icon"></application>
+	<application android:label="Exercise Diet App" android:icon="@drawable/icon"></application>
 	<receiver android:name=".AlarmReceiver" android:enabled="true" android:exported="true" android:process=":remote" android:label="AlarmReceiver" />
 </manifest>
