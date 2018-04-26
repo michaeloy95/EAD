@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             xmlns:vc="clr-namespace:FitnessApp.ViewCells"
+             x:Class="FitnessApp.Views.Food.SelectFoodPage"
+             Title="Select Food">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddFoodCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar VerticalOptions="Start"
+                       HorizontalOptions="Fill"
+                       FontSize="Medium"/>
+            <ListView x:Name="MyFoodListView"
+                      ItemsSource="{Binding FoodList}"
+                      ItemSelected="FoodListView_ItemSelected"
+                      HasUnevenRows="True"
+                      CachingStrategy="RecycleElement"
+                      SeparatorVisibility="None"
+                      IsPullToRefreshEnabled="False"
+                      Margin="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <vc:FoodViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout>
+                        <Label Text="Cannot find your food?"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Small"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"
+                               Margin="20,15"/>
+                        <c:FlatButton Text="Add New Food"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Center"
+                                      TextColor="White"
+                                      FontAttributes="Bold"
+                                      Command="{Binding AddFoodCommand}"
+                                      BackgroundColor="{StaticResource Primary}"
+                                      Margin="20,5"/>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

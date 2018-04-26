@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             x:Class="FitnessApp.Views.Profile.ProfilePage"
+             xmlns:vm="clr-namespace:FitnessApp.ViewModels.Profile;"
+             Title="Profile">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddMealCommand}"/>
+    </ContentPage.ToolbarItems>
+    <Grid x:Name="GridLayout"
+          BackgroundColor="{StaticResource LightBackgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="75"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="MealListView"
+                  Grid.Row="0"
+                  Grid.RowSpan="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  ItemsSource="{Binding MealList}"
+                  ItemSelected="MealListView_ItemSelected"
+                  HasUnevenRows="True"
+                  CachingStrategy="RecycleElement"
+                  SeparatorVisibility="None"
+                  IsPullToRefreshEnabled="False"
+                  Margin="0">
+            <ListView.Header>
+                <Grid Padding="15,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <c:CircleImage Source="profpic"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"
+                                   Aspect="AspectFit"/>
+                    <StackLayout Grid.Column="2"
+                                 Grid.ColumnSpan="3"
+                                 Grid.Row="0"
+                                 Grid.RowSpan="2">
+                        <Label Text="Andre Oliveira"    
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="Fill"
+                               FontSize="Large"                           
+                               VerticalTextAlignment="End"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                        <Label Text="22 years / 1,85 cm"
+                               VerticalOptions="FillAndExpand"
+                               HorizontalOptions="Fill"
+                               FontSize="Medium"
+                               VerticalTextAlignment="Start"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    </StackLayout>
+
+                    <BoxView Grid.Column="0"
+                             Grid.ColumnSpan="5"
+                             Grid.Row="2"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Fill"
+                             BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                             HeightRequest="1"/>
+                    <BoxView Grid.Column="0"
+                             Grid.ColumnSpan="5"
+                             Grid.Row="6"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Fill"
+                             BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                             HeightRequest="1"/>
+                    <BoxView Grid.Column="1"
+                             Grid.Row="3"
+                             Grid.RowSpan="3"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="CenterAndExpand"
+                             BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                             WidthRequest="1"
+                             Margin="0,5"/>
+                    <BoxView Grid.Column="3"
+                             Grid.Row="3"
+                             Grid.RowSpan="3"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="CenterAndExpand"
+                             BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                             WidthRequest="1"
+                             Margin="0,5"/>
+
+                    <Label Text="Weight"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           FontSize="Small"
+                           VerticalOptions="End"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="80,2"
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           FontAttributes="None"
+                           FontSize="Large"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource Primary}"/>
+                    <Label Text="kg"
+                           Grid.Column="0"
+                           Grid.Row="5"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           VerticalOptions="Start"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="BMI"
+                           Grid.Column="2"
+                           Grid.Row="3"
+                           FontSize="Small"
+                           VerticalOptions="End"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="21,7"
+                           Grid.Column="2"
+                           Grid.Row="4"
+                           FontAttributes="None"
+                           FontSize="Large"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource Primary}"/>
+                    <Label Text="kg/m2"
+                           Grid.Column="2"
+                           Grid.Row="5"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           VerticalOptions="Start"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="RDI"
+                           Grid.Column="4"
+                           Grid.Row="3"
+                           FontSize="Small"
+                           VerticalOptions="End"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="2894"
+                           Grid.Column="4"
+                           Grid.Row="4"
+                           FontAttributes="None"
+                           FontSize="Large"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource Primary}"/>
+                    <Label Text="kcal/day"
+                           Grid.Column="4"
+                           Grid.Row="5"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           VerticalOptions="Start"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+
+                    <StackLayout Grid.Column="0"
+                                 Grid.ColumnSpan="5"
+                                 Grid.Row="7"
+                                 IsVisible="{Binding MealListIsNotEmpty}"
+                                 Margin="0,20,0,0">
+                        <Label Text="Your last meals"
+                               FontSize="Medium"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    </StackLayout>
+                    <StackLayout Grid.Column="0"
+                                 Grid.ColumnSpan="5"
+                                 Grid.Row="7"
+                                 IsVisible="{Binding MealListIsEmpty}">
+                        <Label Text="Start completing your diet diary!"
+                               FontSize="Medium"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"
+                               Margin="0,10"/>
+                        <c:FlatButton Text="Add Meal"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Fill"
+                                      TextColor="White"
+                                      FontAttributes="Bold"
+                                      BackgroundColor="{StaticResource Primary}"
+                                      Command="{Binding AddMealCommand}"
+                                      Margin="20,0"/>
+                    </StackLayout>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame VerticalOptions="Start"
+                               HorizontalOptions="Fill"
+                               CornerRadius="10"
+                               BackgroundColor="White"
+                               IsClippedToBounds="True"
+                               Padding="10"
+                               Margin="15,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0"
+                                             Grid.Column="0"
+                                             Grid.ColumnSpan="7"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding MealTypeString}"
+                                           HorizontalOptions="Start"
+                                           FontSize="Medium"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource Primary}"/>
+                                    <Label Text="-"
+                                           HorizontalOptions="Start"
+                                           FontSize="Medium"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                                    <Label Text="{Binding Food.Name}"
+                                           HorizontalOptions="Start"
+                                           FontSize="Medium"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                                </StackLayout>
+
+                                <BoxView Grid.Column="1"
+                                         Grid.Row="1"
+                                         Grid.RowSpan="2"
+                                         VerticalOptions="Fill"
+                                         HorizontalOptions="CenterAndExpand"
+                                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                                         WidthRequest="1"
+                                         Margin="0,5"/>
+                                <BoxView Grid.Column="3"
+                                         Grid.Row="1"
+                                         Grid.RowSpan="2"
+                                         VerticalOptions="Fill"
+                                         HorizontalOptions="CenterAndExpand"
+                                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                                         WidthRequest="1"
+                                         Margin="0,5"/>
+                                <BoxView Grid.Column="5"
+                                         Grid.Row="1"
+                                         Grid.RowSpan="2"
+                                         VerticalOptions="Fill"
+                                         HorizontalOptions="CenterAndExpand"
+                                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                                         WidthRequest="1"
+                                         Margin="0,5"/>
+
+                                <Label Text="Calories"
+                                       Grid.Column="0"
+                                       Grid.Row="1"
+                                       FontSize="Micro"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                <Label Text="Protein"
+                                       Grid.Column="2"
+                                       Grid.Row="1"
+                                       FontSize="Micro"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                <Label Text="Hydrates"
+                                       Grid.Column="4"
+                                       Grid.Row="1"
+                                       FontSize="Micro"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                <Label Text="Fat"
+                                       Grid.Column="6"
+                                       Grid.Row="1"
+                                       FontSize="Micro"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+
+                                <StackLayout Grid.Column="0"
+                                             Grid.Row="2"
+                                             VerticalOptions="Fill"
+                                             HorizontalOptions="Center"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding Food.Calories}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                    <Label Text="kj"
+                                           FontSize="Small"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2"
+                                             Grid.Row="2"
+                                             VerticalOptions="Fill"
+                                             HorizontalOptions="Center"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding Food.Protein}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                    <Label Text="g"
+                                           FontSize="Small"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="4"
+                                             Grid.Row="2"
+                                             VerticalOptions="Fill"
+                                             HorizontalOptions="Center"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding Food.Hydrates}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                    <Label Text="g"
+                                           FontSize="Small"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="6"
+                                             Grid.Row="2"
+                                             VerticalOptions="Fill"
+                                             HorizontalOptions="Center"
+                                             Orientation="Horizontal">
+                                    <Label Text="{Binding Food.Fat}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           Style="{StaticResource LabelBold}"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                    <Label Text="g"
+                                           FontSize="Small"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

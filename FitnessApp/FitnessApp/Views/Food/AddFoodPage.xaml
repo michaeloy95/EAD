@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             x:Class="FitnessApp.Views.Food.AddFoodPage"
+             Title="Add Food">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource LightBackgroundColor}"
+                     Padding="15">
+            <Label Text="Add new food to the list"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Fill"
+                   FontSize="Small"
+                   TextColor="{StaticResource PrimaryDarkTextColor}"/>
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="Fill"
+                         Orientation="Horizontal"
+                         Margin="0,10">
+                <Entry VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       Placeholder="Food"/>
+                <c:FlatButton Text="Search"
+                              VerticalOptions="Center"
+                              HorizontalOptions="End"
+                              FontSize="Small"
+                              TextColor="White"                              
+                              Command="{Binding SearchFoodCommand}"
+                              BackgroundColor="{StaticResource BlueButtonColor}"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="Fill"
+                         Orientation="Horizontal"
+                         Margin="0,10">
+                <Entry VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       Placeholder="Calories"/>
+                <Entry VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       Placeholder="Weight"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="Start"
+                         HorizontalOptions="Fill"
+                         Orientation="Horizontal"
+                         Margin="0,10">
+                <Entry VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       Placeholder="Protein"/>
+                <Entry VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       Placeholder="Hydrates"/>
+                <Entry VerticalOptions="Start"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="Medium"
+                       Placeholder="Fat"/>
+            </StackLayout>
+            <c:FlatButton Text="Add Food"
+                          VerticalOptions="Center"
+                          HorizontalOptions="Fill"
+                          TextColor="White"
+                          FontSize="Medium"
+                          BackgroundColor="{StaticResource Primary}"
+                          Command="{Binding AddFoodCommand}"
+                          Margin="10,10"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

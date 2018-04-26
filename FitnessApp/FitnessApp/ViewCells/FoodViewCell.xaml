@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="FitnessApp.ViewCells.FoodViewCell">
+    <ViewCell.View>
+        <Frame CornerRadius="10"
+               HeightRequest="110"
+               Margin="10"
+               Padding="0"
+               IsClippedToBounds="True"
+               BackgroundColor="White">
+            <Grid RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Image Source="{Binding ImageSource}"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       Grid.RowSpan="4"
+                       Aspect="AspectFill"/>
+                <StackLayout Grid.Column="1"
+                             Grid.ColumnSpan="5"
+                             Grid.Row="0"
+                             Orientation="Horizontal">
+                    <Label Text="{Binding Name}"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="20"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Margin="10,0,0,0"/>
+                    <Label Text="-"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="16"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="{Binding Calories}"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="20"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="kj"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="16"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1"
+                             Grid.ColumnSpan="5"
+                             Grid.Row="1"
+                             VerticalOptions="Start"
+                             HorizontalOptions="Fill"
+                             Orientation="Horizontal">
+                    <Label Text="{Binding Weight}"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="12"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Margin="14,0,0,0"/>
+                    <Label Text="grams"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Start"
+                           VerticalTextAlignment="Center"
+                           FontSize="12"
+                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                </StackLayout>
+
+                <Label Text="Protein"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       VerticalTextAlignment="End"
+                       HorizontalTextAlignment="Center"
+                       FontSize="12"
+                       TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                <Label Text="Hydrates"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill"
+                       Grid.Column="3"
+                       Grid.Row="2"
+                       VerticalTextAlignment="End"
+                       HorizontalTextAlignment="Center"
+                       FontSize="12"
+                       TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                <Label Text="Fat"
+                       VerticalOptions="Fill"
+                       HorizontalOptions="Fill"
+                       Grid.Column="5"
+                       Grid.Row="2"
+                       VerticalTextAlignment="End"
+                       HorizontalTextAlignment="Center"
+                       FontSize="12"
+                       TextColor="{StaticResource PrimaryDarkTextColor}"/>
+
+                <StackLayout Grid.Column="1"
+                             Grid.Row="3"
+                             VerticalOptions="Start"
+                             Orientation="Horizontal">
+                    <Label Text="{Binding Protein}"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="16"
+                           HorizontalTextAlignment="End"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="g"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="16"
+                           HorizontalTextAlignment="Start"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="3"
+                             Grid.Row="3"
+                             VerticalOptions="Start"
+                             Orientation="Horizontal">
+                    <Label Text="{Binding Hydrates}"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="16"
+                           HorizontalTextAlignment="End"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="g"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="16"
+                           HorizontalTextAlignment="Start"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="5"
+                             Grid.Row="3"
+                             VerticalOptions="Start"
+                             Orientation="Horizontal">
+                    <Label Text="{Binding Fat}"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="16"
+                           HorizontalTextAlignment="End"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="g"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="16"
+                           HorizontalTextAlignment="Start"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                </StackLayout>
+
+                <BoxView Grid.Column="2"
+                         Grid.Row="2"
+                         Grid.RowSpan="2"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                         WidthRequest="1"
+                         Margin="0,5"/>
+                <BoxView Grid.Column="4"
+                         Grid.Row="2"
+                         Grid.RowSpan="2"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                         WidthRequest="1"
+                         Margin="0,5"/>
+            </Grid>
+        </Frame>
+    </ViewCell.View>
+</ViewCell>

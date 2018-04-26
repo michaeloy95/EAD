@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="FitnessApp.ViewCells.FoodOnlineViewCell">
+    <ViewCell.View>
+        <StackLayout>
+            <Label Text="Food Name"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   FontSize="Medium"
+                   TextColor="{StaticResource PrimaryDarkTextColor}"/>
+            <Label Text="This is an item description"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Start"
+                   FontSize="Small"
+                   TextColor="{StaticResource SecondaryDarkTextColor}"/>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

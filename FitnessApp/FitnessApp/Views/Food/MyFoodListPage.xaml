@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vc="clr-namespace:FitnessApp.ViewCells"
+             x:Class="FitnessApp.Views.Food.MyFoodListPage"
+             Title="My Food">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar VerticalOptions="Start"
+                       HorizontalOptions="Fill"
+                       FontSize="Medium"/>
+            <ListView x:Name="MyFoodListView"
+                      ItemsSource="{Binding FoodList}"
+                      ItemSelected="FoodListView_ItemSelected"
+                      HasUnevenRows="True"
+                      CachingStrategy="RecycleElement"
+                      SeparatorVisibility="None"
+                      IsPullToRefreshEnabled="False"
+                      Margin="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <vc:FoodViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

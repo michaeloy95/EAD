@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             x:Class="FitnessApp.Views.Login.LoginPage"
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="True"
+             BackgroundColor="{StaticResource LightBackgroundColor}">
+    <ContentPage.Content>
+        <Grid RowSpacing="10"
+              Padding="20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Header icon -->
+            <StackLayout Grid.Row="0"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="Fill"
+                         Orientation="Horizontal"
+                         BackgroundColor="Transparent">
+                <Image Source="icon.png"
+                       VerticalOptions="Center"
+                       HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <!-- Login panel -->
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="Center">
+                <Frame HasShadow="True"
+                       BackgroundColor="{StaticResource LightBackgroundColor}">
+                    <StackLayout VerticalOptions="Fill"
+                                 HorizontalOptions="Fill"
+                                 Orientation="Vertical"
+                                 BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="0"
+                                     Padding="0, 3">
+                            <!--<Image x:Name="UsernameImage"
+                                   Source="username_inactive.png"
+                                   VerticalOptions="Fill"
+                                   HorizontalOptions="Fill"
+                                   WidthRequest="35"
+                                   HeightRequest="35"/>-->
+                            <Entry Placeholder="Username"
+                                   VerticalOptions="Fill"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Medium"
+                                   HorizontalTextAlignment="Start"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="{StaticResource SecondaryDarkTextColor}"
+                                   TextColor="{StaticResource PrimaryDarkTextColor}"
+                                   Text="{Binding Username}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="0"
+                                     Padding="0, 3, 0, 0">
+                            <!--<Image x:Name="PasswordImage"
+                                   Source="password_inactive.png"
+                                   VerticalOptions="Fill"
+                                   HorizontalOptions="Fill"
+                                   WidthRequest="35"
+                                   HeightRequest="35"/>-->
+                            <Entry Placeholder="Password"
+                                   VerticalOptions="Fill"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Medium"
+                                   HorizontalTextAlignment="Start"
+                                   BackgroundColor="Transparent"
+                                   PlaceholderColor="{StaticResource SecondaryDarkTextColor}"
+                                   TextColor="{StaticResource PrimaryDarkTextColor}"
+                                   IsPassword="True"
+                                   Text="{Binding Password}"/>
+                        </StackLayout>
+                        <Label x:Name="ForgotPasswordLabel"
+                               Text="Forgot Password?"
+                               VerticalOptions="Start"
+                               HorizontalOptions="EndAndExpand"
+                               FontSize="Small"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"
+                               Margin="0">
+                        </Label>
+                        <StackLayout Orientation="Vertical"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="FillAndExpand"
+                                     Margin="0, 5, 0, 0">
+                            <c:FlatButton Text="LOGIN"
+                                          VerticalOptions="Start"
+                                          HorizontalOptions="Fill"
+                                          FontSize="Medium"
+                                          FontAttributes="Bold"
+                                          BackgroundColor="{StaticResource Primary}"
+                                          TextColor="{StaticResource PrimaryDarkTextColor}"
+                                          Command="{Binding LoginCommand}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <!-- Forgot password -->
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Start"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="3, 0">
+                    <Label Text="Doesn't have an account?"
+                           VerticalOptions="Center"
+                           HorizontalOptions="EndAndExpand"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    <Label x:Name="SignUpLabel"
+                           Text="Sign Up"
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand"
+                           FontAttributes="Bold"
+                           FontSize="Small"
+                           TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                </StackLayout>
+            </StackLayout>
+            
+            <!-- Login alternatives -->
+            <StackLayout Grid.Row="2"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="Fill"
+                         Orientation="Vertical"
+                         BackgroundColor="Transparent">
+                <StackLayout Orientation="Horizontal"
+                             VerticalOptions="Start"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="0">
+                    <BoxView VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             BackgroundColor="{StaticResource SecondaryDarkTextColor}"
+                             HeightRequest="1"/>
+                    <Label Text="OR"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="Start"
+                           FontSize="15"
+                           FontAttributes="None"
+                           TextColor="{StaticResource SecondaryDarkTextColor}"
+                           Margin="0"/>
+                    <BoxView VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="FillAndExpand"
+                             BackgroundColor="{StaticResource SecondaryDarkTextColor}"
+                             HeightRequest="1"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"
+                             VerticalOptions="Start"
+                             HorizontalOptions="FillAndExpand"
+                             Margin="0, 5">
+                    <c:FlatButton Text="Login with Instagram"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Fill"
+                                ContentLayout="Left,0"
+                                FontSize="Medium"
+                                FontAttributes="None"
+                                BackgroundColor="#E4405F"
+                                TextColor="White"
+                                HeightRequest="50"
+                                Margin="0, 3"/>
+                    <c:FlatButton Text="Login with Facebook"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Fill"
+                                ContentLayout="Left,0"
+                                FontSize="Medium"
+                                FontAttributes="None"
+                                BackgroundColor="#3C66C4"
+                                TextColor="White"
+                                HeightRequest="50"
+                                Margin="0, 3"/>
+                    <c:FlatButton Text="Login with Google+"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Fill"
+                                ContentLayout="Left,0"
+                                FontSize="Medium"
+                                FontAttributes="None"
+                                BackgroundColor="#CF4332"
+                                TextColor="White"
+                                HeightRequest="50"
+                                Margin="0, 3"/>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Copyrights -->
+            <Label Text="© FitnessApp Project Pty Ltd."
+                   Grid.Row="3"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="Center"
+                   FontSize="Micro"
+                   TextColor="{StaticResource SecondaryDarkTextColor}"
+                   Margin="0,10"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

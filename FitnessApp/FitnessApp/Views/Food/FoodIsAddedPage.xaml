@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             x:Class="FitnessApp.Views.Food.FoodIsAddedPage"
+             Title="Food Is Added">
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource LightBackgroundColor}"
+              RowSpacing="0"
+              Padding="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0"
+                   CornerRadius="10"
+                   BackgroundColor="White"
+                   IsClippedToBounds="True"
+                   Margin="0"
+                   Padding="0">
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="5"
+                           Source="https://image.freepik.com/free-photo/grill-chicken-steak_1339-1222.jpg"
+                           Aspect="AspectFill"/>
+                    <StackLayout Grid.Column="0"
+                                 Grid.ColumnSpan="5"
+                                 Grid.Row="1"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="Fill"
+                                 Orientation="Horizontal">
+                        <Label Text="Chicken Steak"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Start"
+                               VerticalTextAlignment="Center"
+                               FontSize="Large"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"
+                               Margin="15,0,0,0"/>
+                        <Label Text="-"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Start"
+                               VerticalTextAlignment="Center"
+                               FontSize="Medium"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                        <Label Text="300"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Start"
+                               VerticalTextAlignment="Center"
+                               FontSize="Large"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                        <Label Text="kj"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Start"
+                               VerticalTextAlignment="Center"
+                               FontSize="Medium"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0"
+                                 Grid.ColumnSpan="5"
+                                 Grid.Row="2"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="Fill"
+                                 Orientation="Horizontal">
+                        <Label Text="150"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Start"
+                               VerticalTextAlignment="Center"
+                               FontSize="Medium"
+                               TextColor="{StaticResource PrimaryDarkTextColor}"
+                               Margin="15,0,0,0"/>
+                        <Label Text="grams"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Start"
+                               VerticalTextAlignment="Center"
+                               FontSize="Medium"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    </StackLayout>
+
+                    <Label Text="Protein"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Small"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="Hydrates"
+                           Grid.Column="2"
+                           Grid.Row="3"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Small"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="Fat"
+                           Grid.Column="4"
+                           Grid.Row="3"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Small"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+
+                    <Label Text="15 g"
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="40 g"
+                           Grid.Column="2"
+                           Grid.Row="4"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label Text="11 g"
+                           Grid.Column="4"
+                           Grid.Row="4"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+
+                    <BoxView Grid.Column="1"
+                             Grid.Row="3"
+                             Grid.RowSpan="2"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="CenterAndExpand"
+                             BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                             WidthRequest="1"
+                             Margin="0,5"/>
+                    <BoxView Grid.Column="3"
+                             Grid.Row="3"
+                             Grid.RowSpan="2"
+                             VerticalOptions="Fill"
+                             HorizontalOptions="CenterAndExpand"
+                             BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                             WidthRequest="1"
+                             Margin="0,5"/>
+                </Grid>
+            </Frame>
+            <StackLayout Grid.Row="1"
+                         VerticalOptions="Center"
+                         BackgroundColor="Transparent">
+                <c:FlatButton Text="Add More Food"
+                              VerticalOptions="Center"
+                              HorizontalOptions="Fill"
+                              TextColor="White"
+                              FontAttributes="Bold"
+                              Command="{Binding AddMoreCommand}"
+                              BackgroundColor="{StaticResource BlueButtonColor}"
+                              Margin="0,5"/>
+                <c:FlatButton Text="Done"
+                              VerticalOptions="Center"
+                              HorizontalOptions="Fill"
+                              TextColor="White"
+                              Command="{Binding DoneCommand}"
+                              BackgroundColor="{StaticResource Primary}"
+                              Margin="0,5"/>
+                </StackLayout>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

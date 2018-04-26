@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="FitnessApp.Views.Board.BoardPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid RowSpacing="10"
+              BackgroundColor="{StaticResource LightBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Slideshow panel -->
+            <StackLayout Grid.Row ="0"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                <controls:CarouselViewControl Orientation="Horizontal"
+                                              InterPageSpacing="10"
+                                              Position="{Binding SlideshowPosition}"
+                                              ItemsSource="{Binding SlideshowItemsSource}"
+                                              VerticalOptions="FillAndExpand"
+                                              HorizontalOptions="FillAndExpand"
+                                              ShowIndicators="True">
+                    <controls:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding .}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"/>
+                        </DataTemplate>
+                    </controls:CarouselViewControl.ItemTemplate>
+                </controls:CarouselViewControl>
+            </StackLayout>
+
+            <!-- Notifications panel -->
+            <StackLayout Grid.Row="1"
+                         Orientation="Vertical"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="Fill">
+                <!--<ListView ItemsSource="{Binding Notifications}"
+                          VerticalOptions="FillAndExpand"
+                          HasUnevenRows="true"
+                          CachingStrategy="RecycleElement"
+                          Margin="10,3">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10,3,0,3">
+                                    <Label Text="{Binding .}"
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="Large" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+                <Label Text="{Binding DisplayNotification}"
+                       LineBreakMode="NoWrap" 
+                       Style="{DynamicResource ListItemTextStyle}" 
+                       FontSize="Large"
+                       Margin="10,3" />
+            </StackLayout>
+
+            <!-- Status -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Orientation="Vertical">
+                    <Image Source="icon.png"
+                           WidthRequest="50"/>
+                    <Label Text="5.21 Kms"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Last Run"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Orientation="Vertical">
+                    <Image Source="icon.png"
+                           WidthRequest="50"/>
+                    <Label Text="45:31"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Elapsed Time"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Grid.Column="2"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Orientation="Vertical">
+                    <Image Source="icon.png"
+                           WidthRequest="50"/>
+                    <Label Text="9:26"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Avg. Speed"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <StackLayout Grid.Column="3"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Orientation="Vertical">
+                    <Image Source="icon.png"
+                           WidthRequest="50"/>
+                    <Label Text="1327"
+                           FontAttributes="Bold"
+                           FontSize="Medium"
+                           HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Calories Burnt"
+                           FontAttributes="None"
+                           FontSize="Small"
+                           HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

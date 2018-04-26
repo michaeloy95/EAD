@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FitnessApp.App"
+             xmlns:c="clr-namespace:FitnessApp.Controls">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Common Color -->
+            <Color x:Key="Primary">#1ABC9C</Color>
+            <Color x:Key="PrimaryDark">#16A085</Color>
+            
+            <!-- Background Color -->
+            <Color x:Key="LightBackgroundColor">#FAFAFA</Color>
+            <Color x:Key="DarkBackgroundColor">#F0F0F0</Color>
+            
+            <!-- Text Color -->
+            <Color x:Key="PrimaryDarkTextColor">#4D4D4D</Color>
+            <Color x:Key="SecondaryDarkTextColor">#999999</Color>
+            <Color x:Key="PrimaryLightTextColor">#FAFAFA</Color>
+            <Color x:Key="SecondaryLightTextColor">#E6E6E6</Color>
+            
+            <!-- Button Color -->
+            <Color x:Key="BlueButtonColor">#4183D7</Color>
+
+            <!-- Navigation Page -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="BarTextColor" Value="{StaticResource PrimaryLightTextColor}" />
+            </Style>
+
+            <!-- Custom Font Family -->
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="LatoLightFont"
+                        Android="fonts/LatoLight.ttf#LatoLight"
+                        iOS="LatoLight"/>
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="LatoSemiboldFont"
+                        Android="fonts/LatoSemibold.ttf#LatoSemibold"
+                        iOS="LatoSemibold"/>
+            
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource LatoLightFont}" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelBold">
+                <Setter Property="FontFamily" Value="{StaticResource LatoSemiboldFont}" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource LatoLightFont}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryDarkTextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryDarkTextColor}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <Style TargetType="c:WhiteEntry">
+                <Setter Property="FontFamily" Value="{StaticResource LatoLightFont}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryLightTextColor}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource PrimaryDark}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <Style TargetType="c:FlatButton">
+                <Setter Property="FontFamily" Value="{StaticResource LatoSemiboldFont}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
