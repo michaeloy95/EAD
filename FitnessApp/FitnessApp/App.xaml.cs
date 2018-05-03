@@ -1,5 +1,6 @@
 ﻿using FitnessApp.Data;
 using FitnessApp.Interfaces;
+using FitnessApp.Models;
 using FitnessApp.Services;
 using FitnessApp.Views;
 using FitnessApp.Views.Login;
@@ -18,6 +19,19 @@ namespace FitnessApp
             {
                 user = user ?? new User();
                 return user;
+            }
+        }
+
+        public static ILocalDatabase<Food> localDatabaseFood = null;
+        public static ILocalDatabase<Food> LocalDatabaseFood
+        {
+            get
+            {
+                if (localDatabaseFood == null)
+                {
+                    localDatabaseFood = new LocalDatabaseFood(DependencyService.Get<IFileHelper>().GetLocalFilePath("LocalDBFood.db3"));
+                }
+                return localDatabaseFood;
             }
         }
 

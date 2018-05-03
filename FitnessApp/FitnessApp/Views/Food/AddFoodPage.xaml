@@ -52,7 +52,7 @@
                 <Entry VerticalOptions="Start"
                        HorizontalOptions="FillAndExpand"
                        FontSize="Medium"
-                       Placeholder="Hydrates"/>
+                       Placeholder="Carbs"/>
                 <Entry VerticalOptions="Start"
                        HorizontalOptions="FillAndExpand"
                        FontSize="Medium"

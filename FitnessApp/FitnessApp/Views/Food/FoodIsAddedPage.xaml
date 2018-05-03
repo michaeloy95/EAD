@@ -99,7 +99,7 @@
                            HorizontalTextAlignment="Center"
                            FontSize="Small"
                            TextColor="{StaticResource PrimaryDarkTextColor}"/>
-                    <Label Text="Hydrates"
+                    <Label Text="Carbs"
                            Grid.Column="2"
                            Grid.Row="3"
                            HorizontalTextAlignment="Center"

@@ -55,7 +55,7 @@ namespace FitnessApp.Views
 
             this.BarTextColor = Color.White;
             this.Icon = "icon_sil.png";
-            this.Title = "Fitness App";
+            this.Title = "Exercise Diet App";
         }
     }
 }

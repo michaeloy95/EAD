@@ -58,7 +58,7 @@ namespace FitnessApp.ViewModels.Profile
                         Name = "Toasty",
                         Calories = 110,
                         Protein = 5,
-                        Hydrates = 10,
+                        Carbs = 10,
                         Fat = 2,
                         ImageSource = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS13ySkAuUsBe8HqxvUfc6aphndKvmO-rwYx4UTkj7laqzLdEH4"
                     }
@@ -74,7 +74,7 @@ namespace FitnessApp.ViewModels.Profile
                         Name = "Chicken Steak",
                         Calories = 220,
                         Protein = 15,
-                        Hydrates = 40,
+                        Carbs = 40,
                         Fat = 11,
                         ImageSource = "https://image.freepik.com/free-photo/grill-chicken-steak_1339-1222.jpg"
                     }

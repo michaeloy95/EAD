@@ -12,7 +12,7 @@
 
         public int Protein { get; set; }
 
-        public int Hydrates { get; set; }
+        public int Carbs { get; set; }
 
         public int Fat { get; set; }
 
