@@ -6,15 +6,15 @@
 
         public string Name { get; set; }
 
-        public int Calories { get; set; }
+        public float Calories { get; set; }
 
-        public int Weight { get; set; }
+        public float Weight { get; set; }
 
-        public int Protein { get; set; }
+        public float Protein { get; set; }
 
-        public int Hydrates { get; set; }
+        public float Hydrates { get; set; }
 
-        public int Fat { get; set; }
+        public float Fat { get; set; }
 
         public string ImageSource { get; set; }
     }

@@ -19,7 +19,7 @@ namespace FitnessApp.Services
         private const string HTTP_METHOD = "GET";
 
         private const int TIMEOUT = 3000;
-
+        
         private static string Nonce()
         {
             Random r = new Random();
@@ -53,7 +53,7 @@ namespace FitnessApp.Services
                     "oauth_consumer_key=" + Constants.FATSECRET_API_KEY,
                     "oauth_nonce=" + Nonce(),
                     "oauth_signature_method=HMAC-SHA1",
-                    "oauth_timestamp=" + new DateTimeOffset(DateTime.UtcNow).ToString(),
+                    "oauth_timestamp=" + (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds,
                     "oauth_version=1.0"
                 };
         }
@@ -75,7 +75,7 @@ namespace FitnessApp.Services
             return sign;
         }
 
-        public static async Task<string> GetFoods(string keyword)
+        public static async Task<JObject> GetFoods(string keyword)
         {
             try
             {
@@ -85,6 +85,7 @@ namespace FitnessApp.Services
                     "max_results=50",
                     "search_expression=" + Encode(keyword)
                 };
+                parameters.Sort();
                 parameters.Add("oauth_signature=" + CreateSignature(HTTP_METHOD, APP_URL, parameters.ToArray()));
 
                 var requestURI = $"{APP_URL}?{String.Join("&", parameters)}";
@@ -121,9 +122,9 @@ namespace FitnessApp.Services
                     return null;
                 }
 
-                if (json["status"].ToString() == "VALID")
+                if (json["foods"] != null)
                 {
-                    return null;
+                    return json;
                 }
                 else
                 {
