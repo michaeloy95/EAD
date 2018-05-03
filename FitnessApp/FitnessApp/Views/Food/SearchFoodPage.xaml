@@ -13,12 +13,12 @@
                        HeightRequest="50"
                        Placeholder="Type keywords.."
                        FontSize="Medium"
-                       Text="{Binding SearchEntryText}"
-                       SearchCommand="{Binding SearchCommand}"/>
+                       Text="{Binding SearchEntryText, Mode=TwoWay}"/>
+
             <ListView x:Name="MyFoodListView"
                       VerticalOptions="FillAndExpand"
                       HorizontalOptions="Fill"
-                      ItemsSource="{Binding FoodList}"
+                      ItemsSource="{Binding FoodList, Mode=TwoWay}"
                       ItemSelected="FoodListView_ItemSelected"
                       HasUnevenRows="True"
                       CachingStrategy="RecycleElement"

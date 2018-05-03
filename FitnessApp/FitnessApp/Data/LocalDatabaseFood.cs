@@ -1,21 +1,21 @@
 ﻿using FitnessApp.Interfaces;
 using FitnessApp.Models;
+using SQLite;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FitnessApp.Data
 {
     public class LocalDatabaseFood : ILocalDatabase<Food>
     {
-        //private readonly SQLiteAsyncConnection database;
+        private readonly SQLiteAsyncConnection database;
 
         public LocalDatabaseFood(string dbPath)
         {
-            //database = new SQLiteAsyncConnection(dbPath);
-            //database.CreateTableAsync<Food>().Wait();
+            database = new SQLiteAsyncConnection(dbPath);
+            database.CreateTableAsync<Food>().Wait();
         }
-        
+
         public async Task<List<Food>> GetItemsAsync()
         {
             return await database.Table<Food>().ToListAsync();

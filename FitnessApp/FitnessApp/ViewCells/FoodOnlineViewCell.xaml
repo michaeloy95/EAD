@@ -4,12 +4,12 @@
           x:Class="FitnessApp.ViewCells.FoodOnlineViewCell">
     <ViewCell.View>
         <StackLayout>
-            <Label Text="Food Name"
+            <Label Text="{Binding Name}"
                    VerticalOptions="Start"
                    HorizontalOptions="Start"
                    FontSize="Medium"
                    TextColor="{StaticResource PrimaryDarkTextColor}"/>
-            <Label Text="This is an item description"
+            <Label Text="{Binding Description}"
                    VerticalOptions="Start"
                    HorizontalOptions="Start"
                    FontSize="Small"

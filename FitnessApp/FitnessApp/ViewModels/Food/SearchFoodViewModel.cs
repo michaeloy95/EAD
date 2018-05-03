@@ -2,6 +2,8 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,61 +18,47 @@ namespace FitnessApp.ViewModels.Food
             set { this.SetProperty<ObservableCollection<Models.Food>>(ref this.foodList, value); }
         }
 
-        private string searchEntryText = string.Empty;
+        private string searchEntryText;
         public string SearchEntryText
         {
             get { return this.searchEntryText; }
-            set { SetProperty<string>(ref this.searchEntryText, value); }
+            set
+            {
+                SetProperty<string>(ref this.searchEntryText, value);
+                if (this.searchEntryText != string.Empty)
+                {
+                   var task = Task.Run(async () =>
+                    {
+                        await SearchFood();
+                    });
+                    task.Wait();
+                }
+            }
         }
-
-        public ICommand SearchCommand { get; private set; }
 
         public SearchFoodViewModel()
         {
-            this.SearchCommand = new Command(this.SearchFood);
+            this.searchEntryText = string.Empty;
+            this.foodList = new ObservableCollection<Models.Food>();
         }
 
-        private async void SearchFood()
+        private async Task SearchFood()
         {
-            var foods = await FatSecretPlatformAPIService.GetFoods(this.SearchEntryText);
-            foodList = new ObservableCollection<Models.Food>();
-            JArray foodsRetrieved = JArray.Parse(foods["food"].ToString());
-            Models.Food temp;
-            foreach (var aFood in foodsRetrieved)
+            var foodResp = await FatSecretPlatformAPIService.GetFoods(this.SearchEntryText);
+            foodList.Clear();
+            if (foodResp != null)
             {
-               
-
-                var initSplit = aFood["food_description"].ToString().Split('-');
-                var nutritionString = initSplit[1].Split('|');
-
-                Dictionary<string, float> nutritionDict = new Dictionary<string, float>();
-                foreach (string aNutrition in nutritionString)
+                var foods = foodResp["foods"]["food"];
+                JArray foodsRetrieved = JArray.Parse(foods.ToString());
+                Models.Food temp;
+                foreach (JObject aFood in foodsRetrieved)
                 {
-                    var split = aNutrition.Split(':');
+                    temp = new Models.Food();
 
-                    string tempNutrition = "";
-                    foreach (char aChar in tempNutrition)
-                    {
-                        if (aChar != ' ' || aChar != 'k' || aChar != 'g')
-                            tempNutrition += aChar;
-                        else if (aChar == 'k' || aChar == 'g')
-                            break;
-                    }
+                    temp.ParseJObject(aFood);
 
-                    nutritionDict.Add(split[0].Trim(), float.Parse(tempNutrition));
+                    foodList.Add(temp);
                 }
-
-                temp = new Models.Food();
-                temp.ID = aFood["food_id"].ToString();
-                temp.Name = aFood["food_name"].ToString();
-                temp.ImageSource = aFood["food_url"].ToString();
-                temp.Calories = nutritionDict["Calories"];
-                temp.Fat = nutritionDict["Fat"];
-                temp.Protein = nutritionDict["Protein"];
-                temp.Hydrates = nutritionDict["Carbs"];
-                //temp.Weight = initSplit[0];
-
-                foodList.Add(temp);
             }
         }
     }
