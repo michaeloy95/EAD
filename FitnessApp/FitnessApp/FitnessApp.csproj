@@ -8,7 +8,7 @@
     <ProjectGuid>{785DC44A-1C73-4A3F-AC2C-EEB401081E12}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EDA</RootNamespace>
+    <RootNamespace>FitnessApp</RootNamespace>
     <AssemblyName>EDA</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
@@ -44,12 +44,15 @@
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\WhiteEntry.cs" />
     <Compile Include="Controls\FlatButton.cs" />
+    <Compile Include="Data\LocalDatabaseFood.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Enums\MealType.cs" />
     <Compile Include="Interfaces\IDeviceUtility.cs" />
     <Compile Include="Interfaces\IEncodingHelper.cs" />
+    <Compile Include="Interfaces\IFileHelper.cs" />
     <Compile Include="Interfaces\INavigationService.cs" />
     <Compile Include="Interfaces\INotificationManager.cs" />
+    <Compile Include="Interfaces\ILocalDatabase.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

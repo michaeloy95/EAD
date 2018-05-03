@@ -1,12 +1,12 @@
-﻿using FitnessApp.Droid.Helpers;
-using FitnessApp.Interfaces;
+﻿using FitnessApp.Interfaces;
+using FitnessApp.iOS.Helpers;
 using System;
 using System.Security.Cryptography;
 using System.Text;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(EncodingHelper))]
-namespace FitnessApp.Droid.Helpers
+namespace FitnessApp.iOS.Helpers
 {
     public class EncodingHelper : IEncodingHelper
     {
