@@ -11,6 +11,13 @@ namespace FitnessApp.ViewModels.Food
 {
     public class SearchFoodViewModel : BaseViewModel
     {
+        // <summary>
+        // Dictionary to cache search data
+        // key : search term
+        // value : food list result
+        // </summary>
+        private Dictionary<string, ObservableCollection<Models.Food>> cacheData;
+
         private ObservableCollection<Models.Food> foodList;
         public ObservableCollection<Models.Food> FoodList
         {
@@ -38,27 +45,37 @@ namespace FitnessApp.ViewModels.Food
 
         public SearchFoodViewModel()
         {
+            this.cacheData = new Dictionary<string, ObservableCollection<Models.Food>>();
             this.searchEntryText = string.Empty;
             this.foodList = new ObservableCollection<Models.Food>();
         }
 
         private async Task SearchFood()
         {
-            var foodResp = await FatSecretPlatformAPIService.GetFoods(this.SearchEntryText);
-            foodList.Clear();
-            if (foodResp != null)
+            // if data exist in cache, take from there instead of requesting to API
+            if (cacheData.ContainsKey(this.searchEntryText))
             {
-                var foods = foodResp["foods"]["food"];
-                JArray foodsRetrieved = JArray.Parse(foods.ToString());
-                Models.Food temp;
-                foreach (JObject aFood in foodsRetrieved)
+                this.FoodList = cacheData[this.searchEntryText];
+            }
+            else
+            {
+                var foodResp = await FatSecretPlatformAPIService.GetFoods(this.SearchEntryText);
+                foodList.Clear();
+                if (foodResp != null)
                 {
-                    temp = new Models.Food();
+                    var foods = foodResp["foods"]["food"];
+                    JArray foodsRetrieved = JArray.Parse(foods.ToString());
+                    Models.Food temp;
+                    foreach (JObject aFood in foodsRetrieved)
+                    {
+                        temp = new Models.Food();
 
-                    temp.ParseJObject(aFood);
+                        temp.ParseJObject(aFood);
 
-                    foodList.Add(temp);
+                        foodList.Add(temp);
+                    }
                 }
+                cacheData.Add(this.searchEntryText, new ObservableCollection<Models.Food>(this.foodList));
             }
         }
     }
