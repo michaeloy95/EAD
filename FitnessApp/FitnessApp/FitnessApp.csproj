@@ -45,6 +45,7 @@
     <Compile Include="Controls\WhiteEntry.cs" />
     <Compile Include="Controls\FlatButton.cs" />
     <Compile Include="Data\LocalDatabaseFood.cs" />
+    <Compile Include="Data\LocalDatabaseMeal.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Enums\MealType.cs" />
     <Compile Include="Interfaces\IDeviceUtility.cs" />

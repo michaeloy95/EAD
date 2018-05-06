@@ -200,13 +200,13 @@
                         <c:FlatButton Text="+"
                                       Grid.Column="1"
                                       VerticalOptions="Center"
-                                      HorizontalOptions="Fill"
-                                      TextColor="White"
+                                      HorizontalOptions="Center"
                                       FontAttributes="Bold"
-                                      FontSize="Small"
-                                      BackgroundColor="{StaticResource Primary}"
-                                      Command="{Binding AddMealCommand}"
-                                      Margin="8,0"/>
+                                      FontSize="Large"
+                                      TextColor="{StaticResource Primary}"
+                                      Style="{StaticResource LabelBold}"
+                                      BackgroundColor="{StaticResource LightBackgroundColor}"
+                                      Command="{Binding AddMealCommand}"/>
                     </Grid>
                     <StackLayout Grid.Column="0"
                                  Grid.ColumnSpan="5"
