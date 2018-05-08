@@ -22,6 +22,19 @@ namespace FitnessApp
             }
         }
 
+        public static ILocalDatabase<Meal> localDatabaseMeal = null;
+        public static ILocalDatabase<Meal> LocalDatabaseMeal
+        {
+            get
+            {
+                if (localDatabaseMeal == null)
+                {
+                    localDatabaseMeal = new LocalDatabaseMeal(DependencyService.Get<IFileHelper>().GetLocalFilePath("LocalDBMeal.db3"));
+                }
+                return localDatabaseMeal;
+            }
+        }
+
         public static ILocalDatabase<Food> localDatabaseFood = null;
         public static ILocalDatabase<Food> LocalDatabaseFood
         {
