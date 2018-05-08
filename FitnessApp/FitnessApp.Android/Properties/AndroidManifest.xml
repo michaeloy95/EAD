@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="au.com.franksons.ExerciseDietApp" android:largeHeap="true" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<application android:label="Exercise Diet App" android:icon="@drawable/icon"></application>
 	<receiver android:name=".AlarmReceiver" android:enabled="true" android:exported="true" android:process=":remote" android:label="AlarmReceiver" />
 </manifest>

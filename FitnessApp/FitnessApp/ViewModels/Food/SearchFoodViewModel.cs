@@ -3,9 +3,12 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Plugin.Connectivity;
+using System;
 
 namespace FitnessApp.ViewModels.Food
 {
@@ -17,6 +20,12 @@ namespace FitnessApp.ViewModels.Food
         // value : food list result
         // </summary>
         private Dictionary<string, ObservableCollection<Models.Food>> cacheData;
+
+        private bool stopTyping = false;
+
+        private Task myTask;
+
+        private CancellationTokenSource cts;
 
         private ObservableCollection<Models.Food> foodList;
         public ObservableCollection<Models.Food> FoodList
@@ -34,11 +43,26 @@ namespace FitnessApp.ViewModels.Food
                 SetProperty<string>(ref this.searchEntryText, value);
                 if (this.searchEntryText != string.Empty)
                 {
-                   var task = Task.Run(async () =>
+                    stopTyping = false;
+                    if (myTask != null)
+                        if (myTask.Status == TaskStatus.Running)
+                            cts.Cancel();
+                        
+                    Device.StartTimer(System.TimeSpan.FromMilliseconds(500), () => 
                     {
-                        await SearchFood();
+                        myTask = Task.Factory.StartNew(async () =>
+                        {
+                            stopTyping = true;
+                            if (stopTyping)
+                                if (CrossConnectivity.Current.IsConnected)
+                                    await SearchFood();
+                                else
+                                {
+                                    // No internet connection
+                                }
+                        });
+                        return false;
                     });
-                    task.Wait();
                 }
             }
         }
@@ -48,6 +72,7 @@ namespace FitnessApp.ViewModels.Food
             this.cacheData = new Dictionary<string, ObservableCollection<Models.Food>>();
             this.searchEntryText = string.Empty;
             this.foodList = new ObservableCollection<Models.Food>();
+            this.cts = new CancellationTokenSource();
         }
 
         private async Task SearchFood()
