@@ -205,6 +205,7 @@
   <ItemGroup>
     <Compile Include="Helpers\EncodingHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Notification\NotificationManager.cs" />

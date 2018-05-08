@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Plugin.Connectivity;
 using System;
+using FitnessApp.Interfaces;
 
 namespace FitnessApp.ViewModels.Food
 {
@@ -59,6 +60,7 @@ namespace FitnessApp.ViewModels.Food
                                 else
                                 {
                                     // No internet connection
+                                    DependencyService.Get<IMessageHelper>().ShortAlert("No internet connection");
                                 }
                         });
                         return false;

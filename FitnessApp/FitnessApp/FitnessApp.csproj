@@ -51,6 +51,7 @@
     <Compile Include="Interfaces\IDeviceUtility.cs" />
     <Compile Include="Interfaces\IEncodingHelper.cs" />
     <Compile Include="Interfaces\IFileHelper.cs" />
+    <Compile Include="Interfaces\IMessageHelper.cs" />
     <Compile Include="Interfaces\INavigationService.cs" />
     <Compile Include="Interfaces\INotificationManager.cs" />
     <Compile Include="Interfaces\ILocalDatabase.cs" />
