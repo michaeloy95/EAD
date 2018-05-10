@@ -3,6 +3,8 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
+using FitnessApp.Droid.Helpers;
+using FitnessApp.Interfaces;
 using Plugin.CurrentActivity;
 
 namespace FitnessApp.Droid
@@ -20,6 +22,7 @@ namespace FitnessApp.Droid
         {
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
+
             //A great place to initialize Xamarin.Insights and Dependency Services!
         }
 
