@@ -1,15 +1,12 @@
-﻿using FitnessApp.Services;
+﻿using FitnessApp.Interfaces;
+using FitnessApp.Services;
 using Newtonsoft.Json.Linq;
+using Plugin.Connectivity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
-using Plugin.Connectivity;
-using System;
-using FitnessApp.Interfaces;
 
 namespace FitnessApp.ViewModels.Food
 {
