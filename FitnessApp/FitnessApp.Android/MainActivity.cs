@@ -2,9 +2,11 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Autofac;
 using CarouselView.FormsPlugin.Android;
 using FitnessApp.Utilities;
+using Plugin.Permissions;
 
 namespace FitnessApp.Droid
 {
@@ -41,6 +43,12 @@ namespace FitnessApp.Droid
             var builder = new ContainerBuilder();
             builder.RegisterModule<PlatformModule>();
             ViewModelLocator.RegisterServices(builder);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

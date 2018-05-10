@@ -1,8 +1,8 @@
-﻿using FitnessApp.ViewModels.Food;
+﻿using FitnessApp.ViewModels.Meal;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FitnessApp.Views.Food
+namespace FitnessApp.Views.Meal
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectFoodPage : ContentPage

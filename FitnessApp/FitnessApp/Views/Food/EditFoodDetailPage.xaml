@@ -2,16 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:FitnessApp.Controls"
-             x:Class="FitnessApp.Views.Food.AddFoodPage"
-             Title="Add Food">
+             x:Class="FitnessApp.Views.Food.EditFoodDetailPage"
+             Title="Edit Food">
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource LightBackgroundColor}"
                      Padding="15">
-            <Label Text="Add new food to the list"
-                   VerticalOptions="Start"
-                   HorizontalOptions="Fill"
-                   FontSize="Medium"
-                   TextColor="{StaticResource PrimaryDarkTextColor}"/>
             <StackLayout VerticalOptions="Start"
                          HorizontalOptions="Fill"
                          Orientation="Horizontal"

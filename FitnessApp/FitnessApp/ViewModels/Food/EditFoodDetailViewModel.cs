@@ -8,8 +8,15 @@ using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels.Food
 {
-    public class AddFoodViewModel : BaseViewModel
+    public class EditFoodDetailViewModel : BaseViewModel
     {
+        private Models.Food selectedFood;
+        public Models.Food SelectedFood
+        {
+            get { return this.selectedFood; }
+            set { this.SetProperty<Models.Food>(ref this.selectedFood, value); }
+        }
+
         private string nameText = string.Empty;
         public string NameText
         {
@@ -23,7 +30,7 @@ namespace FitnessApp.ViewModels.Food
             get { return this.caloriesText; }
             set { this.SetProperty<string>(ref this.caloriesText, value); }
         }
-        
+
         public IList<string> MeasurementItems
         {
             get { return new List<string>(Enum.GetNames(typeof(FoodMeasurement))); }
@@ -59,12 +66,25 @@ namespace FitnessApp.ViewModels.Food
 
         public ICommand SearchFoodCommand { get; private set; }
 
-        public ICommand AddFoodCommand { get; private set; }
+        public ICommand DoneCommand { get; private set; }
 
-        public AddFoodViewModel()
+        public EditFoodDetailViewModel(Models.Food food)
         {
             this.SearchFoodCommand = new Command(this.SearchFood);
-            this.AddFoodCommand = new Command(this.AddFood);
+            this.DoneCommand = new Command(this.Done);
+
+            this.Initialise(food);
+        }
+
+        private void Initialise(Models.Food food)
+        {
+            this.SelectedFood = food;
+            this.NameText = food.Name;
+            this.CaloriesText = food.Calories.ToString();
+            this.CarbsText = food.Carbs.ToString();
+            this.ProteinText = food.Protein.ToString();
+            this.FatText = food.Fat.ToString();
+            this.MeasurementIndex = (int)food.Measurement;
         }
 
         private void SearchFood()
@@ -72,7 +92,7 @@ namespace FitnessApp.ViewModels.Food
             this.NavigationService.NavigateTo(typeof(SearchFoodPage));
         }
 
-        private async void AddFood()
+        private void Done()
         {
             var message = DependencyService.Get<IMessageHelper>();
             var field = (this.NameText == string.Empty) ? "Name"
@@ -88,29 +108,16 @@ namespace FitnessApp.ViewModels.Food
                 return;
             }
 
-            if (this.IsBusy)
-            {
-                return;
-            }
-            this.IsBusy = true;
+            this.SelectedFood.Name = this.NameText;
+            this.SelectedFood.Measurement = (FoodMeasurement)this.MeasurementIndex;
+            this.SelectedFood.Calories = float.Parse(this.CaloriesText);
+            this.SelectedFood.Protein = float.Parse(this.ProteinText);
+            this.SelectedFood.Carbs = float.Parse(this.CarbsText);
+            this.SelectedFood.Fat = float.Parse(this.FatText);
 
-            Models.Food food = new Models.Food()
-            {
-                ID = Guid.NewGuid().ToString(),
-                Name = this.NameText,
-                Measurement = (FoodMeasurement)this.MeasurementIndex,
-                Calories = float.Parse(this.CaloriesText),
-                Protein = float.Parse(this.ProteinText),
-                Carbs = float.Parse(this.CarbsText),
-                Fat = float.Parse(this.FatText),
-                ImageSource = "imageplaceholder.png"
-            };
+            MessagingCenter.Send<EditFoodDetailViewModel, Models.Food>(this, "Update Detail", this.SelectedFood);
 
-            await this.LocalDatabaseFood.SaveItemAsync(food);
-            this.NavigationService.SwitchTo(typeof(FoodIsAddedPage), new object[1] { food });
-            this.User.FoodIsLoaded = false;
-
-            this.IsBusy = false;
+            this.NavigationService.GoBack();
         }
     }
 }

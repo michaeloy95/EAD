@@ -41,12 +41,14 @@
     </Compile>
     <Compile Include="AppModule.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Utils.cs" />
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\WhiteEntry.cs" />
     <Compile Include="Controls\FlatButton.cs" />
     <Compile Include="Data\LocalDatabaseFood.cs" />
     <Compile Include="Data\LocalDatabaseMeal.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Enums\FoodMeasurement.cs" />
     <Compile Include="Enums\MealType.cs" />
     <Compile Include="Interfaces\IDeviceUtility.cs" />
     <Compile Include="Interfaces\IEncodingHelper.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Interfaces\INavigationService.cs" />
     <Compile Include="Interfaces\INotificationManager.cs" />
     <Compile Include="Interfaces\ILocalDatabase.cs" />
+    <Compile Include="Interfaces\IMessageHelper.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,10 +70,12 @@
       <DependentUpon>FoodViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Food\AddFoodViewModel.cs" />
+    <Compile Include="ViewModels\Food\EditFoodDetailViewModel.cs" />
+    <Compile Include="ViewModels\Food\EditFoodViewModel.cs" />
     <Compile Include="ViewModels\Food\FoodIsAddedViewModel.cs" />
     <Compile Include="ViewModels\Food\MyFoodListViewModel.cs" />
     <Compile Include="ViewModels\Food\SearchFoodViewModel.cs" />
-    <Compile Include="ViewModels\Food\SelectFoodViewModel.cs" />
+    <Compile Include="ViewModels\Meal\SelectFoodViewModel.cs" />
     <Compile Include="ViewModels\Login\WelcomeViewModel.cs" />
     <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -86,6 +91,12 @@
     <Compile Include="Views\Food\AddFoodPage.xaml.cs">
       <DependentUpon>AddFoodPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Food\EditFoodDetailPage.xaml.cs">
+      <DependentUpon>EditFoodDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Food\EditFoodPage.xaml.cs">
+      <DependentUpon>EditFoodPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Food\FoodIsAddedPage.xaml.cs">
       <DependentUpon>FoodIsAddedPage.xaml</DependentUpon>
     </Compile>
@@ -95,7 +106,7 @@
     <Compile Include="Views\Food\SearchFoodPage.xaml.cs">
       <DependentUpon>SearchFoodPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Food\SelectFoodPage.xaml.cs">
+    <Compile Include="Views\Meal\SelectFoodPage.xaml.cs">
       <DependentUpon>SelectFoodPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\WelcomePage.xaml.cs">
@@ -165,6 +176,15 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Media.3.2.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugin.Media.3.2.1\lib\netstandard1.0\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.Permissions.3.0.0.8\lib\netstandard1.0\Plugin.Permissions.dll</HintPath>
     </Reference>
     <Reference Include="SQLite-net, Version=1.4.118.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\sqlite-net-pcl.1.4.118\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
@@ -258,13 +278,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Food\SelectFoodPage.xaml">
+    <EmbeddedResource Include="Views\Meal\SelectFoodPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Food\SearchFoodPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Food\EditFoodPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Food\EditFoodDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

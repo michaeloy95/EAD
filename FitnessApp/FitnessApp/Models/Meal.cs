@@ -1,13 +1,17 @@
 ﻿using FitnessApp.Enums;
+using SQLite;
 using System;
 
 namespace FitnessApp.Models
 {
     public class Meal
     {
+        [PrimaryKey]
         public string ID { get; set; }
 
         public Food Food { get; set; }
+
+        public string Description { get; set; }
 
         public DateTime DateTime { get; set; }
 

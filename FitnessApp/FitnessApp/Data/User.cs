@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace FitnessApp.Data
@@ -97,6 +93,18 @@ namespace FitnessApp.Data
             private set;
         }
 
+        public bool FoodIsLoaded
+        {
+            get;
+            set;
+        }
+
+        public bool MealIsLoaded
+        {
+            get;
+            set;
+        }
+
         public User()
         {
             this.Initialise();
@@ -153,6 +161,10 @@ namespace FitnessApp.Data
             this.RDI = Application.Current.Properties.ContainsKey(RDIKey)
                                     ? (int)Application.Current.Properties[RDIKey]
                                     : 0;
+
+            this.FoodIsLoaded = false;
+
+            this.MealIsLoaded = false;
         }
 
         public void SetLogin(bool logged)
@@ -227,6 +239,10 @@ namespace FitnessApp.Data
             {
                 Application.Current.Properties.Remove(BMIKey);
             }
+
+            this.FoodIsLoaded = false;
+
+            this.MealIsLoaded = false;
         }
     }
 }

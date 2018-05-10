@@ -5,15 +5,15 @@ using Xamarin.Forms.Xaml;
 namespace FitnessApp.Views.Food
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FoodIsAddedPage : ContentPage
-	{
-        public FoodIsAddedViewModel ViewModel;
+    public partial class EditFoodPage : ContentPage
+    {
+        public EditFoodViewModel ViewModel;
 
-		public FoodIsAddedPage(Models.Food food)
-		{
-			InitializeComponent ();
+        public EditFoodPage(Models.Food food)
+        {
+            InitializeComponent();
 
-            this.ViewModel = new FoodIsAddedViewModel(food)
+            this.ViewModel = new EditFoodViewModel(food)
             {
                 Title = this.Title
             };
@@ -25,6 +25,14 @@ namespace FitnessApp.Views.Food
             if (this.ViewModel.UploadImageCommand.CanExecute(null))
             {
                 this.ViewModel.UploadImageCommand.Execute(null);
+            }
+        }
+
+        private void FoodDetail_Tapped(object sender, System.EventArgs e)
+        {
+            if (this.ViewModel.GotoFoodDetailCommand.CanExecute(null))
+            {
+                this.ViewModel.GotoFoodDetailCommand.Execute(null);
             }
         }
     }

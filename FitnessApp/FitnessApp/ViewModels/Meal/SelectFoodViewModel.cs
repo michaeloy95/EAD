@@ -4,11 +4,11 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace FitnessApp.ViewModels.Food
+namespace FitnessApp.ViewModels.Meal
 {
-    public class MyFoodListViewModel : BaseViewModel
+    public class SelectFoodViewModel : BaseViewModel
     {
-        private ObservableCollection<Models.Food> foodList = new ObservableCollection<Models.Food>();
+        private ObservableCollection<Models.Food> foodList;
         public ObservableCollection<Models.Food> FoodList
         {
             get { return this.foodList; }
@@ -33,35 +33,23 @@ namespace FitnessApp.ViewModels.Food
             }
         }
 
-        public ICommand AddCommand { get; private set; }
+        public ICommand AddFoodCommand { get; private set; }
 
-        public ICommand EditCommand { get; private set; }
-
-        public MyFoodListViewModel()
+        public SelectFoodViewModel()
         {
-            this.AddCommand = new Command(this.AddFood);
-            this.EditCommand = new Command<Models.Food>(this.EditFood);
+            this.AddFoodCommand = new Command(this.AddFood);
+            this.Initialise();
         }
 
-        public async void RefreshItem()
+        public async void Initialise()
         {
-            if (!this.User.FoodIsLoaded)
-            {
-                this.FoodList = new ObservableCollection<Models.Food>((await this.LocalDatabaseFood.GetItemsAsync()).OrderBy(f => f.Name).ToList());
-                this.FoodLayoutVisible = this.FoodList.Count > 0;
-            }
-
-            this.User.FoodIsLoaded = true;
+            this.FoodList = new ObservableCollection<Models.Food>((await this.LocalDatabaseFood.GetItemsAsync()).OrderBy(f => f.Name).ToList());
+            this.FoodLayoutVisible = this.FoodList.Count > 0;
         }
 
         private void AddFood()
         {
             this.NavigationService.NavigateTo(typeof(AddFoodPage));
-        }
-
-        private void EditFood(Models.Food food)
-        {
-            this.NavigationService.NavigateTo(typeof(EditFoodPage), new object[1] { food });
         }
     }
 }

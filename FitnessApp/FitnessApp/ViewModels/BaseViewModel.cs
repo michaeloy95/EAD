@@ -1,13 +1,11 @@
 ﻿using FitnessApp.Data;
 using FitnessApp.Interfaces;
-using FitnessApp.Services;
+using FitnessApp.Models;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels
 {
@@ -27,6 +25,22 @@ namespace FitnessApp.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        public ILocalDatabase<Models.Meal> LocalDatabaseMeal
+        {
+            get
+            {
+                return App.LocalDatabaseMeal;
+            }
+        }
+
+        public ILocalDatabase<Models.Food> LocalDatabaseFood
+        {
+            get
+            {
+                return App.LocalDatabaseFood;
+            }
         }
 
         public INavigationService NavigationService

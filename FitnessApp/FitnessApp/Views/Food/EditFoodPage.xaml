@@ -1,9 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:FitnessApp.Controls"
-             x:Class="FitnessApp.Views.Food.FoodIsAddedPage"
-             Title="Food Is Added">
+             x:Class="FitnessApp.Views.Food.EditFoodPage"
+             Title="{Binding SelectedFood.Name}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="Delete" Command="{Binding DeleteCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid BackgroundColor="{StaticResource LightBackgroundColor}"
               RowSpacing="0"
@@ -36,7 +39,7 @@
                     <Image Grid.Row="0"
                            Grid.Column="0"
                            Grid.ColumnSpan="5"
-                           Source="{Binding ImageSource}"
+                           Source="{Binding ImageSourceText}"
                            Aspect="AspectFill">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="FoodImage_Tapped"/>
@@ -70,12 +73,24 @@
                                TextColor="{StaticResource PrimaryDarkTextColor}"/>
                         <Label Text="kj"
                                VerticalOptions="Fill"
-                               HorizontalOptions="Start"
+                               HorizontalOptions="StartAndExpand"
                                VerticalTextAlignment="Center"
                                FontSize="Medium"
                                TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                        <Label Text="EDIT"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="End"
+                               VerticalTextAlignment="Center"
+                               FontSize="Small"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"
+                               Margin="20,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="FoodDetail_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
-                    
+
                     <Label Grid.Column="0"
                            Grid.ColumnSpan="5"
                            Grid.Row="2"
@@ -146,20 +161,14 @@
             <StackLayout Grid.Row="1"
                          VerticalOptions="Center"
                          BackgroundColor="Transparent">
-                <c:FlatButton Text="Add More Food"
+                <c:FlatButton Text="Update"
                               VerticalOptions="Center"
                               HorizontalOptions="Fill"
                               TextColor="White"
                               FontAttributes="Bold"
-                              Command="{Binding AddMoreCommand}"
+                              Command="{Binding UpdateCommand}"
                               BackgroundColor="{StaticResource BlueButtonColor}"
-                              Margin="0,5"/>
-                <c:FlatButton Text="Done"
-                              VerticalOptions="Center"
-                              HorizontalOptions="Fill"
-                              TextColor="White"
-                              Command="{Binding DoneCommand}"
-                              BackgroundColor="{StaticResource Primary}"
+                              IsEnabled="{Binding IsUpdated}"
                               Margin="0,5"/>
             </StackLayout>
         </Grid>

@@ -1,20 +1,32 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using FitnessApp.Enums;
+using Newtonsoft.Json.Linq;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace FitnessApp.Models
 {
     public class Food
     {
+        [PrimaryKey]
         public string ID { get; set; }
-
+        
         public string Name { get; set; }
 
         public float Calories { get; set; }
 
-        public float Weight { get; set; }
+        public FoodMeasurement Measurement { get; set; }
 
-        public string Measurement { get; set; }
+        public string MeasurementText
+        {
+            get
+            {
+                return (this.Measurement == FoodMeasurement.HundredGrams) ? "100 grams"
+                : (this.Measurement == FoodMeasurement.Package) ? "1 package"
+                : string.Empty;
+            }
+        }
 
         public float Protein { get; set; }
 
@@ -31,7 +43,7 @@ namespace FitnessApp.Models
         {
             get
             {
-                return "Per " + Weight.ToString() + " " + Measurement + " - Calories: " + Calories.ToString() +
+                return Measurement.ToString() + " - Calories: " + Calories.ToString() +
                     "g | Fat: " + Fat.ToString() + "g | Carbs: " + Carbs.ToString() + "g | Protein: " + Protein.ToString();
             }
         }
@@ -62,6 +74,7 @@ namespace FitnessApp.Models
 
                     nutritionDict.Add(split[0].Trim(), float.Parse(tempNutrition));
                 }
+
                 string tempWeight = "", tempMeasurement = "";
                 foreach (char aChar in initSplit[0].Substring(4))
                 {
@@ -78,12 +91,13 @@ namespace FitnessApp.Models
                 this.Fat = nutritionDict["Fat"];
                 this.Protein = nutritionDict["Protein"];
                 this.Carbs = nutritionDict["Carbs"];
-                this.Weight = float.Parse(tempWeight);
-                this.Measurement = tempMeasurement;
+                //this.Weight = float.Parse(tempWeight);
+                //this.Measurement = tempMeasurement;
                 return this;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 return null;
             }
         }

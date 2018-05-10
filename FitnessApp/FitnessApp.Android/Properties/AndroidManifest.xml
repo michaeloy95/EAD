@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="au.com.franksons.ExerciseDietApp" android:largeHeap="true" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.VIBRATE" />
-	<application android:label="Exercise Diet App" android:icon="@drawable/icon"></application>
+	<application android:label="Exercise Diet App" android:icon="@drawable/icon">
+    <provider android:name="android.support.v4.content.FileProvider"
+				android:authorities="au.com.franksons.ExerciseDietApp.fileprovider"
+				android:exported="false"
+				android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/file_paths"></meta-data>
+    </provider>
+  </application>
 	<receiver android:name=".AlarmReceiver" android:enabled="true" android:exported="true" android:process=":remote" android:label="AlarmReceiver" />
 </manifest>

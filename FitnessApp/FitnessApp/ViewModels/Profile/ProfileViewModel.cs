@@ -1,4 +1,4 @@
-﻿using FitnessApp.Views.Food;
+﻿using FitnessApp.Views.Meal;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
