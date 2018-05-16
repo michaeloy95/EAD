@@ -43,6 +43,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Controls\CircleImage.cs" />
+    <Compile Include="Controls\CustomPicker.cs" />
     <Compile Include="Controls\WhiteEntry.cs" />
     <Compile Include="Controls\FlatButton.cs" />
     <Compile Include="Data\LocalDatabaseFood.cs" />
@@ -75,8 +76,11 @@
     <Compile Include="ViewModels\Food\FoodIsAddedViewModel.cs" />
     <Compile Include="ViewModels\Food\MyFoodListViewModel.cs" />
     <Compile Include="ViewModels\Food\SearchFoodViewModel.cs" />
-    <Compile Include="ViewModels\Meal\SelectFoodViewModel.cs" />
+    <Compile Include="ViewModels\Meal\AddMealViewModel.cs" />
+    <Compile Include="ViewModels\Meal\EditMealViewModel.cs" />
+    <Compile Include="ViewModels\Meal\SelectAddFoodViewModel.cs" />
     <Compile Include="ViewModels\Login\WelcomeViewModel.cs" />
+    <Compile Include="ViewModels\Meal\SelectEditFoodViewModel.cs" />
     <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Board\BoardViewModel.cs" />
@@ -106,8 +110,14 @@
     <Compile Include="Views\Food\SearchFoodPage.xaml.cs">
       <DependentUpon>SearchFoodPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Meal\SelectFoodPage.xaml.cs">
-      <DependentUpon>SelectFoodPage.xaml</DependentUpon>
+    <Compile Include="Views\Meal\AddMealPage.xaml.cs">
+      <DependentUpon>AddMealPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Meal\EditMealPage.xaml.cs">
+      <DependentUpon>EditMealPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Meal\SelectAddFoodPage.xaml.cs">
+      <DependentUpon>SelectAddFoodPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -284,7 +294,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Meal\SelectFoodPage.xaml">
+    <EmbeddedResource Include="Views\Meal\SelectAddFoodPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -303,6 +313,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Food\EditFoodDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Meal\AddMealPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Meal\EditMealPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

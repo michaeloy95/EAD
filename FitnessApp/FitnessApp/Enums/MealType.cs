@@ -2,10 +2,10 @@
 {
     public enum MealType
     {
-        Breakfast,
-        Brunch,
-        Lunch,
-        Dinner,
-        Supper
+        Breakfast = 0,
+        Brunch = 1,
+        Lunch = 2,
+        Dinner = 3,
+        Supper = 4
     }
 }

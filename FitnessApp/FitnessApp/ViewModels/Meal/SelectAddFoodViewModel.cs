@@ -1,4 +1,5 @@
 ﻿using FitnessApp.Views.Food;
+using FitnessApp.Views.Meal;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -6,7 +7,7 @@ using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels.Meal
 {
-    public class SelectFoodViewModel : BaseViewModel
+    public class SelectAddFoodViewModel : BaseViewModel
     {
         private ObservableCollection<Models.Food> foodList;
         public ObservableCollection<Models.Food> FoodList
@@ -35,13 +36,15 @@ namespace FitnessApp.ViewModels.Meal
 
         public ICommand AddFoodCommand { get; private set; }
 
-        public SelectFoodViewModel()
+        public ICommand SelectFoodCommand { get; private set; }
+
+        public SelectAddFoodViewModel()
         {
             this.AddFoodCommand = new Command(this.AddFood);
-            this.Initialise();
+            this.SelectFoodCommand = new Command<Models.Food>(this.SelectFood);
         }
 
-        public async void Initialise()
+        public async void RefreshItems()
         {
             this.FoodList = new ObservableCollection<Models.Food>((await this.LocalDatabaseFood.GetItemsAsync()).OrderBy(f => f.Name).ToList());
             this.FoodLayoutVisible = this.FoodList.Count > 0;
@@ -50,6 +53,11 @@ namespace FitnessApp.ViewModels.Meal
         private void AddFood()
         {
             this.NavigationService.NavigateTo(typeof(AddFoodPage));
+        }
+
+        private void SelectFood(Models.Food food)
+        {
+            this.NavigationService.NavigateTo(typeof(AddMealPage), new object[1] { food });
         }
     }
 }

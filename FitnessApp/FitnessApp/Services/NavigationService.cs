@@ -31,6 +31,16 @@ namespace FitnessApp.Services
             this.CurrentPage.Navigation.PopAsync();
         }
 
+        public void GoBack(int pages)
+        {
+            var stack = this.CurrentMainPage.Navigation.NavigationStack;
+            for (int i = 0; i < pages - 1; i++)
+            {
+                this.CurrentMainPage.Navigation.RemovePage(stack[stack.Count - 2]);
+            }
+            this.GoBack();
+        }
+
         public void NavigateTo(Type type)
         {
             this.NavigateTo(type, null);

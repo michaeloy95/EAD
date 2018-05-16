@@ -84,7 +84,7 @@ namespace FitnessApp.ViewModels.Profile
 
         public void AddMeal()
         {
-            this.NavigationService.NavigateTo(typeof(SelectFoodPage));
+            this.NavigationService.NavigateTo(typeof(SelectAddFoodPage));
         }
     }
 }

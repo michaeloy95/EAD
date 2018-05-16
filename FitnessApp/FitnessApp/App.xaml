@@ -21,6 +21,9 @@
             
             <!-- Button Color -->
             <Color x:Key="BlueButtonColor">#4183D7</Color>
+            
+            <!-- Border Color -->
+            <Color x:Key="LightBorderColor">#E6E6E6</Color>
 
             <!-- Navigation Page -->
             <Style TargetType="NavigationPage">

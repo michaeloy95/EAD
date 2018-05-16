@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:FitnessApp.Controls"
              xmlns:vc="clr-namespace:FitnessApp.ViewCells"
-             x:Class="FitnessApp.Views.Meal.SelectFoodPage"
+             x:Class="FitnessApp.Views.Meal.SelectAddFoodPage"
              Title="Select Food">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddFoodCommand}"/>

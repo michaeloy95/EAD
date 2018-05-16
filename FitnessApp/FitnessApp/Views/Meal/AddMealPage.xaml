@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             xmlns:vc="clr-namespace:FitnessApp.ViewCells"
+             x:Class="FitnessApp.Views.Meal.AddMealPage"
+             Title="Add Meal">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource LightBackgroundColor}">
+            <ListView x:Name="FoodListView"
+                      ItemsSource="{Binding FoodList}"
+                      ItemSelected="FoodListView_ItemSelected"
+                      HasUnevenRows="True"
+                      CachingStrategy="RecycleElement"
+                      SeparatorVisibility="None"
+                      IsPullToRefreshEnabled="False"
+                      Margin="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <vc:FoodViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Header>
+                    <StackLayout VerticalOptions="Start"
+                                 Margin="15">
+                        <Label Text="Food"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Fill"
+                               FontSize="Medium"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.Footer>
+                    <StackLayout VerticalOptions="Start"
+                                 Margin="15">
+                        <BoxView VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource LightBorderColor}"
+                                 HeightRequest="1"
+                                 Margin="0,10"/>
+
+                        <Label Text="MealType"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Fill"
+                               FontSize="Medium"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                        <c:CustomPicker VerticalOptions="Start"
+                                        HorizontalOptions="Fill"
+                                        Title="Measurement"
+                                        ItemsSource="{Binding MealTypeItems}"
+                                        SelectedIndex="{Binding MealTypeIndex}"/>
+
+                        <BoxView VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource LightBorderColor}"
+                                 HeightRequest="1"
+                                 Margin="0,10"/>
+
+                        <StackLayout VerticalOptions="Start"
+                                     Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="Time"
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="Fill"
+                                       FontSize="Medium"
+                                       Style="{StaticResource LabelBold}"
+                                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                <TimePicker Time="{Binding MealTime}"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Center"
+                                            WidthRequest="100"
+                                            TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="Date"
+                                       VerticalOptions="Start"
+                                       HorizontalOptions="Fill"
+                                       FontSize="Medium"
+                                       Style="{StaticResource LabelBold}"
+                                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                                <DatePicker Date="{Binding MealDate}"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="Center"
+                                            WidthRequest="100"
+                                            TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <BoxView VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource LightBorderColor}"
+                                 HeightRequest="1"
+                                 Margin="0,10"/>
+
+                        <Label Text="Description"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Fill"
+                               FontSize="Medium"
+                               Style="{StaticResource LabelBold}"
+                               TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                        <Editor Text="{Binding DescriptionText}"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Fill"
+                                FontSize="Medium"
+                                TextColor="{StaticResource PrimaryDarkTextColor}"
+                                HeightRequest="100"/>
+
+                        <BoxView VerticalOptions="Center"
+                                 HorizontalOptions="FillAndExpand"
+                                 BackgroundColor="{StaticResource LightBorderColor}"
+                                 HeightRequest="1"
+                                 Margin="0,10"/>
+
+                        <c:FlatButton Text="Save Meal"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Fill"
+                                      TextColor="White"
+                                      FontSize="Medium"
+                                      BackgroundColor="{StaticResource Primary}"
+                                      Command="{Binding AddMealCommand}"
+                                      Margin="0,10"/>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

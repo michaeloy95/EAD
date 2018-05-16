@@ -4,16 +4,16 @@ using Xamarin.Forms.Xaml;
 
 namespace FitnessApp.Views.Meal
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectFoodPage : ContentPage
-	{
-        public SelectFoodViewModel ViewModel;
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddMealPage : ContentPage
+    {
+        public AddMealViewModel ViewModel;
 
-		public SelectFoodPage ()
-		{
-			InitializeComponent ();
+        public AddMealPage(Models.Food food)
+        {
+            InitializeComponent();
 
-            this.ViewModel = new SelectFoodViewModel()
+            this.ViewModel = new AddMealViewModel(food)
             {
                 Title = this.Title
             };
@@ -22,7 +22,7 @@ namespace FitnessApp.Views.Meal
 
         private void FoodListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            this.MyFoodListView.SelectedItem = null;
+            this.FoodListView.SelectedItem = null;
         }
     }
 }

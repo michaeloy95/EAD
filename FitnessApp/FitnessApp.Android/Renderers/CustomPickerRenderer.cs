@@ -1,10 +1,11 @@
 ﻿using Android.Content;
 using Android.Views;
+using FitnessApp.Controls;
 using FitnessApp.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(Picker), typeof(CustomPickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
 namespace FitnessApp.Droid.Renderers
 {
     public class CustomPickerRenderer : PickerRenderer
@@ -17,9 +18,13 @@ namespace FitnessApp.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            if (Control != null)
+            if (this.Control != null && e.NewElement != null)
             {
-                Control.Gravity = GravityFlags.CenterHorizontal;
+                var element = e.NewElement as CustomPicker;
+                this.Control.Gravity = (element.HorizontalTextAlignment == Xamarin.Forms.TextAlignment.Start) ? GravityFlags.Start
+                    : (element.HorizontalTextAlignment == Xamarin.Forms.TextAlignment.Center) ? GravityFlags.CenterHorizontal
+                    : (element.HorizontalTextAlignment == Xamarin.Forms.TextAlignment.End) ? GravityFlags.End
+                    : GravityFlags.Start;
             }
         }
     }

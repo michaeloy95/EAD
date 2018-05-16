@@ -73,11 +73,12 @@
                        HorizontalTextAlignment="Center"
                        Style="{StaticResource LabelBold}"
                        TextColor="{StaticResource PrimaryDarkTextColor}"/>
-                <Picker VerticalOptions="Start"
-                        HorizontalOptions="FillAndExpand"
-                        Title="Measurement"
-                        ItemsSource="{Binding MeasurementItems}"
-                        SelectedIndex="{Binding MeasurementIndex}"/>
+                <c:CustomPicker VerticalOptions="Start"
+                                HorizontalOptions="FillAndExpand"
+                                Title="Measurement"
+                                HorizontalTextAlignment="Center"
+                                ItemsSource="{Binding MeasurementItems}"
+                                SelectedIndex="{Binding MeasurementIndex}"/>
             </StackLayout>
             <StackLayout VerticalOptions="Start"
                          HorizontalOptions="Fill"
