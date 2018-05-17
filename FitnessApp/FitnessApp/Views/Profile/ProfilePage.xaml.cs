@@ -47,6 +47,16 @@ namespace FitnessApp.Views.Profile
 
         private void MealListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+
+            if (this.ViewModel.SelectMealCommand.CanExecute(e.SelectedItem))
+            {
+                this.ViewModel.SelectMealCommand.Execute(e.SelectedItem);
+            }
+
             this.MealListView.SelectedItem = null;
         }
     }
