@@ -38,6 +38,7 @@
                            HorizontalOptions="Start"
                            VerticalTextAlignment="Center"
                            FontSize="20"
+                           LineBreakMode="TailTruncation"
                            Style="{StaticResource LabelBold}"
                            TextColor="{StaticResource PrimaryDarkTextColor}"
                            Margin="10,0,0,0"/>
@@ -51,6 +52,7 @@
                            VerticalOptions="Fill"
                            HorizontalOptions="Start"
                            VerticalTextAlignment="Center"
+                           MinimumWidthRequest="50"
                            FontSize="20"
                            TextColor="{StaticResource PrimaryDarkTextColor}"/>
                     <Label Text="kj"
@@ -58,7 +60,9 @@
                            HorizontalOptions="Start"
                            VerticalTextAlignment="Center"
                            FontSize="16"
-                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                           MinimumWidthRequest="30"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Margin="0,0,10,0"/>
                 </StackLayout>
 
                 <StackLayout Grid.Column="1"

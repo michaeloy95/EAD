@@ -22,6 +22,16 @@ namespace FitnessApp.Views.Food
 
         private void FoodListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+
+            if (this.ViewModel.SelectFoodCommand.CanExecute(e.SelectedItem))
+            {
+                this.ViewModel.SelectFoodCommand.Execute(e.SelectedItem);
+            }
+
             this.MyFoodListView.SelectedItem = null;
         }
     }
