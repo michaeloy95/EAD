@@ -31,7 +31,8 @@
                 <SearchBar VerticalOptions="Start"
                            HorizontalOptions="Fill"
                            HeightRequest="50"
-                           FontSize="Medium"/>
+                           FontSize="Medium"
+                           Text="{Binding SearchEntryText, Mode=TwoWay}"/>
                 <ListView x:Name="MyFoodListView"
                           ItemsSource="{Binding FoodList}"
                           ItemSelected="FoodListView_ItemSelected"

@@ -33,6 +33,16 @@ namespace FitnessApp.ViewModels.Food
             }
         }
 
+        private string searchEntryText;
+        public string SearchEntryText
+        {
+            get { return this.searchEntryText; }
+            set
+            {
+                this.searchEntryText = value;
+            }
+        }
+
         public ICommand AddCommand { get; private set; }
 
         public ICommand EditCommand { get; private set; }
