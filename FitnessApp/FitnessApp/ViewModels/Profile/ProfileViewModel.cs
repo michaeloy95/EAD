@@ -35,9 +35,12 @@ namespace FitnessApp.ViewModels.Profile
 
         public ICommand AddMealCommand { get; private set; }
 
+        public ICommand SelectMealCommand { get; private set; }
+
         public ProfileViewModel()
         {
-            this.AddMealCommand = new Command(AddMeal);
+            this.AddMealCommand = new Command(this.AddMeal);
+            this.SelectMealCommand = new Command<Models.Meal>(this.SelectMeal);
 
             this.Initialise();
             this.MealListIsEmpty = this.MealList.Count == 0;
@@ -82,9 +85,14 @@ namespace FitnessApp.ViewModels.Profile
             };
         }
 
-        public void AddMeal()
+        private void AddMeal()
         {
             this.NavigationService.NavigateTo(typeof(SelectAddFoodPage));
+        }
+
+        private void SelectMeal(Models.Meal meal)
+        {
+            this.NavigationService.NavigateTo(typeof(EditMealPage), new object[1] { meal });
         }
     }
 }
