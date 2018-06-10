@@ -74,12 +74,13 @@ namespace FitnessApp.ViewModels.Meal
         private void Initialise(Models.Meal meal)
         {
             this.SelectedMeal = meal;
+            this.FoodList = new ObservableCollection<Models.Food>();
             this.FoodList.Add(meal.Food);
 
             this.MealTypeIndex = (int)meal.MealType;
             this.MealTime = meal.DateTime.TimeOfDay;
             this.MealDate = meal.DateTime.Date;
-            this.DescriptionText = meal.Description;
+            this.DescriptionText = meal.Description ?? "";
         }
 
         public void SelectFood()
