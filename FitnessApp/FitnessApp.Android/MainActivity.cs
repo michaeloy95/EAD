@@ -6,6 +6,7 @@ using Android.Runtime;
 using Autofac;
 using CarouselView.FormsPlugin.Android;
 using FitnessApp.Utilities;
+using Plugin.CurrentActivity;
 using Plugin.Permissions;
 
 namespace FitnessApp.Droid
@@ -26,6 +27,7 @@ namespace FitnessApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            CrossCurrentActivity.Current.Init(this, bundle);
             CarouselViewRenderer.Init();
 
             RegisterServices();

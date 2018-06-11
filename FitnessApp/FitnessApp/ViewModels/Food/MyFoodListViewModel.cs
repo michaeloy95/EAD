@@ -15,6 +15,12 @@ namespace FitnessApp.ViewModels.Food
             set { this.SetProperty<ObservableCollection<Models.Food>>(ref this.foodList, value); }
         }
 
+        private ObservableCollection<Models.Food> filteredFoodList = new ObservableCollection<Models.Food>();
+        public ObservableCollection<Models.Food> FilteredFoodList
+        {
+            get { return this.filteredFoodList; }
+            set { this.SetProperty<ObservableCollection<Models.Food>>(ref this.filteredFoodList, value); }
+        }
         private bool emptyFoodLayoutVisible = true;
         public bool EmptyFoodLayoutVisible
         {
@@ -40,6 +46,11 @@ namespace FitnessApp.ViewModels.Food
             set
             {
                 this.searchEntryText = value;
+                if (string.IsNullOrWhiteSpace(this.searchEntryText))
+                    this.FilteredFoodList = new ObservableCollection<Models.Food>(FoodList);
+                else
+                    this.FilteredFoodList = new ObservableCollection<Models.Food>(FoodList
+                        .Where(x => x.Name.Contains(this.searchEntryText)));
             }
         }
 
@@ -58,6 +69,7 @@ namespace FitnessApp.ViewModels.Food
             if (!this.User.FoodIsLoaded)
             {
                 this.FoodList = new ObservableCollection<Models.Food>((await this.LocalDatabaseFood.GetItemsAsync()).OrderBy(f => f.Name).ToList());
+                this.FilteredFoodList = new ObservableCollection<Models.Food>(FoodList);
                 this.FoodLayoutVisible = this.FoodList.Count > 0;
             }
 
