@@ -8,11 +8,14 @@
                    VerticalOptions="Start"
                    HorizontalOptions="Start"
                    FontSize="Medium"
+                   Style="{StaticResource LabelBold}"
+                   Margin="10,10,10,0"
                    TextColor="{StaticResource PrimaryDarkTextColor}"/>
             <Label Text="{Binding Description}"
                    VerticalOptions="Start"
                    HorizontalOptions="Start"
                    FontSize="Small"
+                   Margin="10,0,10,10"
                    TextColor="{StaticResource SecondaryDarkTextColor}"/>
         </StackLayout>
     </ViewCell.View>

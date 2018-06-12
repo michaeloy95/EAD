@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels.Food
@@ -24,6 +25,13 @@ namespace FitnessApp.ViewModels.Food
         private Task myTask;
 
         private CancellationTokenSource cts;
+
+        private Models.Food selectedFood;
+        public Models.Food SelectedFood
+        {
+            get { return this.selectedFood; }
+            set { SetProperty<Models.Food>(ref this.selectedFood, value); }
+        }
 
         private ObservableCollection<Models.Food> foodList;
         public ObservableCollection<Models.Food> FoodList
@@ -65,6 +73,8 @@ namespace FitnessApp.ViewModels.Food
                 }
             }
         }
+        public ICommand SelectFoodCommand { get; private set; }
+
 
         public SearchFoodViewModel()
         {
@@ -72,6 +82,7 @@ namespace FitnessApp.ViewModels.Food
             this.searchEntryText = string.Empty;
             this.foodList = new ObservableCollection<Models.Food>();
             this.cts = new CancellationTokenSource();
+            this.SelectFoodCommand = new Command<Models.Food>(this.SelectFood);
         }
 
         private async Task SearchFood()
@@ -84,9 +95,9 @@ namespace FitnessApp.ViewModels.Food
             else
             {
                 var foodResp = await FatSecretPlatformAPIService.GetFoods(this.SearchEntryText);
-                foodList.Clear();
                 if (foodResp != null)
                 {
+                    foodList.Clear();
                     var foods = foodResp["foods"]["food"];
                     JArray foodsRetrieved = JArray.Parse(foods.ToString());
                     Models.Food temp;
@@ -101,6 +112,14 @@ namespace FitnessApp.ViewModels.Food
                 }
                 cacheData.Add(this.searchEntryText, new ObservableCollection<Models.Food>(this.foodList));
             }
+            
+        }
+        private void SelectFood(Models.Food food)
+        {
+            this.SelectedFood = food;
+            MessagingCenter.Send<SearchFoodViewModel, Models.Food>(this, "Select Food", this.SelectedFood);
+
+            this.NavigationService.GoBack();
         }
     }
 }

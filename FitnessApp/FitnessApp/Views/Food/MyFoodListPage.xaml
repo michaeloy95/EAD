@@ -31,9 +31,10 @@
                 <SearchBar VerticalOptions="Start"
                            HorizontalOptions="Fill"
                            HeightRequest="50"
-                           FontSize="Medium"/>
+                           FontSize="Medium"
+                           Text="{Binding SearchEntryText, Mode=TwoWay}"/>
                 <ListView x:Name="MyFoodListView"
-                          ItemsSource="{Binding FoodList}"
+                          ItemsSource="{Binding FilteredFoodList}"
                           ItemSelected="FoodListView_ItemSelected"
                           HasUnevenRows="True"
                           CachingStrategy="RecycleElement"

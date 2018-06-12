@@ -85,11 +85,27 @@ namespace FitnessApp.ViewModels.Food
             this.ProteinText = food.Protein.ToString();
             this.FatText = food.Fat.ToString();
             this.MeasurementIndex = (int)food.Measurement;
+
+            MessagingCenter.Subscribe<SearchFoodViewModel, Models.Food>(this, "Select Food", (sender, args) =>
+            {
+                this.UpdateFoodDetail(args);
+            });
         }
 
         private void SearchFood()
         {
             this.NavigationService.NavigateTo(typeof(SearchFoodPage));
+            
+        }
+
+        private void UpdateFoodDetail(Models.Food food)
+        {
+            this.NameText = food.Name;
+            this.CaloriesText = $"{food.Calories}";
+            this.CarbsText = $"{food.Carbs}";
+            this.ProteinText = $"{food.Protein}";
+            this.FatText = $"{food.Fat}";
+            this.MeasurementIndex = (int)food.Measurement;
         }
 
         private void Done()

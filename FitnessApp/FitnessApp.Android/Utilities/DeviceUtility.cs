@@ -12,6 +12,8 @@ using Plugin.CurrentActivity;
 using Plugin.Permissions.Abstractions;
 using Plugin.Permissions;
 using Android.OS;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace FitnessApp.Droid.Utilities
 {
@@ -362,11 +364,11 @@ namespace FitnessApp.Droid.Utilities
                 info.Add("Error Message", errorMessage);
                 info.Add("Data", JsonConvert.SerializeObject(data));
 
-                RaygunClient.Current?.SendInBackground(new Exception("LE Clerk metric tracking exception."), new[] { "Metric", "Tracking" }, info);
+               // RaygunClient.Current?.SendInBackground(new Exception("LE Clerk metric tracking exception."), new[] { "Metric", "Tracking" }, info);
             }
             catch (Exception ex)
             {
-                RaygunClient.Current?.SendInBackground(ex);
+               // RaygunClient.Current?.SendInBackground(ex);
             }
 #endif
         }

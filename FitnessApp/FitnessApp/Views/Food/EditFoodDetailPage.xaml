@@ -133,7 +133,7 @@
                        Style="{StaticResource LabelBold}"
                        TextColor="{StaticResource PrimaryDarkTextColor}"/>
             </StackLayout>
-            <c:FlatButton Text="Add Food"
+            <c:FlatButton Text="Done"
                           VerticalOptions="Center"
                           HorizontalOptions="Fill"
                           TextColor="White"

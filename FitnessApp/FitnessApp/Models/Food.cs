@@ -93,6 +93,10 @@ namespace FitnessApp.Models
                 this.Carbs = nutritionDict["Carbs"];
                 //this.Weight = float.Parse(tempWeight);
                 //this.Measurement = tempMeasurement;
+                if (tempMeasurement == "g")
+                    this.Measurement = FoodMeasurement.HundredGrams;
+                else
+                    this.Measurement = FoodMeasurement.Package;
                 return this;
             }
             catch (Exception ex)
