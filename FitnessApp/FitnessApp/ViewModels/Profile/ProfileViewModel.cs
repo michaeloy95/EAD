@@ -1,5 +1,4 @@
 ﻿using FitnessApp.Views.Meal;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -42,47 +41,13 @@ namespace FitnessApp.ViewModels.Profile
             this.AddMealCommand = new Command(this.AddMeal);
             this.SelectMealCommand = new Command<Models.Meal>(this.SelectMeal);
 
-            this.Initialise();
-            this.MealListIsEmpty = this.MealList.Count == 0;
+            this.RefreshItem();
         }
 
-        public void Initialise()
+        public async void RefreshItem()
         {
-            this.MealList = new ObservableCollection<Models.Meal>()
-            {
-                new Models.Meal()
-                {
-                    ID = Guid.NewGuid().ToString(),
-                    MealType = Enums.MealType.Breakfast,
-                    DateTime = new DateTime(2018, 04, 09, 09, 33, 15),
-                    Food = new Models.Food()
-                    {
-                        ID = Guid.NewGuid().ToString(),
-                        Name = "Toasty",
-                        Calories = 110,
-                        Protein = 5,
-                        Carbs = 10,
-                        Fat = 2,
-                        ImageSource = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS13ySkAuUsBe8HqxvUfc6aphndKvmO-rwYx4UTkj7laqzLdEH4"
-                    }
-                },
-                new Models.Meal()
-                {
-                    ID = Guid.NewGuid().ToString(),
-                    MealType = Enums.MealType.Dinner,
-                    DateTime = new DateTime(2018, 04, 09, 18, 24, 11),
-                    Food = new Models.Food()
-                    {
-                        ID = Guid.NewGuid().ToString(),
-                        Name = "Chicken Steak",
-                        Calories = 220,
-                        Protein = 15,
-                        Carbs = 40,
-                        Fat = 11,
-                        ImageSource = "https://image.freepik.com/free-photo/grill-chicken-steak_1339-1222.jpg"
-                    }
-                }
-            };
+            this.MealList = new ObservableCollection<Models.Meal>(await this.LocalDatabaseMeal.GetItemsAsync());
+            this.MealListIsEmpty = this.MealList == null || this.MealList.Count == 0;
         }
 
         private void AddMeal()

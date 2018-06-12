@@ -9,7 +9,7 @@ namespace FitnessApp.Models
         [PrimaryKey]
         public string ID { get; set; }
 
-        public Food Food { get; set; }
+        public string FoodID { get; set; }
 
         public string Description { get; set; }
 

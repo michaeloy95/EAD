@@ -70,7 +70,7 @@
                                 <TimePicker Time="{Binding MealTime}"
                                             VerticalOptions="Start"
                                             HorizontalOptions="Center"
-                                            WidthRequest="100"
+                                            WidthRequest="150"
                                             TextColor="{StaticResource PrimaryDarkTextColor}"/>
                             </StackLayout>
                             <StackLayout HorizontalOptions="Start">
@@ -83,7 +83,7 @@
                                 <DatePicker Date="{Binding MealDate}"
                                             VerticalOptions="Start"
                                             HorizontalOptions="Center"
-                                            WidthRequest="100"
+                                            WidthRequest="150"
                                             TextColor="{StaticResource PrimaryDarkTextColor}"/>
                             </StackLayout>
                         </StackLayout>

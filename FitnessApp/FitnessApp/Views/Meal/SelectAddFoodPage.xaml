@@ -24,7 +24,7 @@
                               TextColor="White"
                               FontAttributes="Bold"
                               BackgroundColor="{StaticResource Primary}"
-                              Command="{Binding AddCommand}"
+                              Command="{Binding AddFoodCommand}"
                               Margin="20,0"/>
             </StackLayout>
             <StackLayout IsVisible="{Binding FoodLayoutVisible}">

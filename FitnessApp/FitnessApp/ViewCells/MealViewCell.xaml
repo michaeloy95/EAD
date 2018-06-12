@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="FitnessApp.ViewCells.MealViewCell">
+    <ViewCell.View>
+        <Frame VerticalOptions="Start"
+               HorizontalOptions="Fill"
+               CornerRadius="10"
+               BackgroundColor="White"
+               IsClippedToBounds="True"
+               Padding="10"
+               Margin="15,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="7"
+                             Orientation="Horizontal"
+                             Margin="0,3">
+                    <Label Text="{Binding MealTypeString}"
+                           HorizontalOptions="Start"
+                           FontSize="Medium"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource Primary}"/>
+                    <Label Text="-"
+                           HorizontalOptions="Start"
+                           FontSize="Medium"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                    <Label x:Name="FoodNameLabel"
+                           HorizontalOptions="Start"
+                           FontSize="Medium"
+                           Style="{StaticResource LabelBold}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"/>
+                </StackLayout>
+
+                <BoxView Grid.Column="1"
+                         Grid.Row="1"
+                         Grid.RowSpan="2"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                         WidthRequest="1"
+                         Margin="0,5"/>
+                <BoxView Grid.Column="3"
+                         Grid.Row="1"
+                         Grid.RowSpan="2"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                         WidthRequest="1"
+                         Margin="0,5"/>
+                <BoxView Grid.Column="5"
+                         Grid.Row="1"
+                         Grid.RowSpan="2"
+                         VerticalOptions="Fill"
+                         HorizontalOptions="CenterAndExpand"
+                         BackgroundColor="{StaticResource SecondaryLightTextColor}"
+                         WidthRequest="1"
+                         Margin="0,5"/>
+ 
+                <Label Text="Calories"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                <Label Text="Protein"
+                       Grid.Column="2"
+                       Grid.Row="1"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                <Label Text="Carbs"
+                       Grid.Column="4"
+                       Grid.Row="1"
+                       FontSize="Micro"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                <Label Text="Fat"
+                        Grid.Column="6"
+                        Grid.Row="1"
+                        FontSize="Micro"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{StaticResource SecondaryDarkTextColor}"/>
+
+                <StackLayout Grid.Column="0"
+                            Grid.Row="2"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                    <Label x:Name="FoodCaloriesLabel"
+                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelBold}"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    <Label Text="kj"
+                            FontSize="Small"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="2"
+                            Grid.Row="2"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                    <Label x:Name="FoodProteinLabel"
+                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelBold}"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    <Label Text="g"
+                            FontSize="Small"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="4"
+                            Grid.Row="2"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                    <Label x:Name="FoodCarbsLabel"
+                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelBold}"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    <Label Text="g"
+                            FontSize="Small"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="6"
+                            Grid.Row="2"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                    <Label x:Name="FoodFatLabel"
+                            FontSize="Medium"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelBold}"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                    <Label Text="g"
+                            FontSize="Small"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </ViewCell.View>
+</ViewCell>

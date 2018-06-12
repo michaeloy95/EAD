@@ -70,6 +70,9 @@
     <Compile Include="ViewCells\FoodViewCell.xaml.cs">
       <DependentUpon>FoodViewCell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewCells\MealViewCell.xaml.cs">
+      <DependentUpon>MealViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Food\AddFoodViewModel.cs" />
     <Compile Include="ViewModels\Food\EditFoodDetailViewModel.cs" />
     <Compile Include="ViewModels\Food\EditFoodViewModel.cs" />
@@ -334,6 +337,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Meal\SelectEditFoodPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ViewCells\MealViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -57,11 +57,11 @@ namespace FitnessApp.ViewModels.Board
                 "Notifications 10",
             };
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
-            {
-                SlideshowPosition = ++SlideshowPosition % SlideshowItemsSource.Count;
-                return true;
-            });
+            //Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            //{
+            //    SlideshowPosition = ++SlideshowPosition % SlideshowItemsSource.Count;
+            //    return true;
+            //});
 
             this.NotificationManager.ShowNotificationAlarmMorning();
             this.NotificationManager.ShowNotificationAlarmNoon();

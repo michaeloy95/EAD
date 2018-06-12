@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 #if __ANDROID__
 using Xamarin.Forms.Platform.Android;
-using NativeTest.Droid; //Your Namespace
+using FitnessApp.Droid; //Your Namespace
 using Android.Views;
 #endif
 
@@ -41,7 +41,7 @@ namespace FitnessApp.Views.Profile
 
             StackLayout stack = new StackLayout();
             stack.Children.Add(fab);
-            this.GridLayout.Children.Add(stack, 0, 2, 0, 2);
+            this.GridLayout.Children.Add(stack, 0, 1, 0, 1);
 #endif
         }
 
@@ -58,6 +58,13 @@ namespace FitnessApp.Views.Profile
             }
 
             this.MealListView.SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            this.ViewModel.RefreshItem();
         }
     }
 }

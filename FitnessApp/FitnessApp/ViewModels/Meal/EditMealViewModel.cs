@@ -1,5 +1,6 @@
 ﻿using FitnessApp.Enums;
 using FitnessApp.Interfaces;
+using FitnessApp.Views.Meal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -71,11 +72,11 @@ namespace FitnessApp.ViewModels.Meal
             this.Initialise(meal);
         }
 
-        private void Initialise(Models.Meal meal)
+        private async void Initialise(Models.Meal meal)
         {
             this.SelectedMeal = meal;
             this.FoodList = new ObservableCollection<Models.Food>();
-            this.FoodList.Add(meal.Food);
+            this.FoodList.Add(await this.LocalDatabaseFood.GetItemAsync(meal.FoodID));
 
             this.MealTypeIndex = (int)meal.MealType;
             this.MealTime = meal.DateTime.TimeOfDay;
@@ -90,6 +91,8 @@ namespace FitnessApp.ViewModels.Meal
                 this.FoodList.Clear();
                 this.FoodList.Add(arg);
             });
+
+            this.NavigationService.NavigateTo(typeof(SelectEditFoodPage));
         }
 
         private async void DeleteMeal()
@@ -119,7 +122,7 @@ namespace FitnessApp.ViewModels.Meal
             }
             this.IsBusy = true;
 
-            this.SelectedMeal.Food = this.FoodList[0] ?? null;
+            this.SelectedMeal.FoodID = this.FoodList[0].ID ?? null;
             this.SelectedMeal.DateTime = new DateTime(
                                                 this.MealDate.Year,
                                                 this.MealDate.Month,
@@ -128,7 +131,7 @@ namespace FitnessApp.ViewModels.Meal
                                                 this.MealTime.Minutes,
                                                 this.MealTime.Seconds);
             this.SelectedMeal.MealType = (MealType)this.MealTypeIndex;
-            this.SelectedMeal.Description = this.DescriptionText;
+            this.SelectedMeal.Description = this.DescriptionText ?? "";
 
             await this.LocalDatabaseMeal.SaveItemAsync(this.SelectedMeal);
             message.ShortAlert("Meal updated.");

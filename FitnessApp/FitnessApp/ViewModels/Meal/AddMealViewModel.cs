@@ -71,7 +71,7 @@ namespace FitnessApp.ViewModels.Meal
             Models.Meal meal = new Models.Meal()
             {
                 ID = Guid.NewGuid().ToString(),
-                Food = this.FoodList[0] ?? null,
+                FoodID = this.FoodList[0].ID ?? null,
                 DateTime = new DateTime(
                     this.MealDate.Year,
                     this.MealDate.Month,
@@ -80,12 +80,13 @@ namespace FitnessApp.ViewModels.Meal
                     this.MealTime.Minutes,
                     this.MealTime.Seconds),
                 MealType = (MealType)this.MealTypeIndex,
-                Description = this.DescriptionText
+                Description = this.DescriptionText ?? ""
             };
 
             await this.LocalDatabaseMeal.SaveItemAsync(meal);
             message.ShortAlert("New meal is successfully added.");
             this.User.MealIsLoaded = false;
+            this.NavigationService.GoBack();
             this.NavigationService.GoBack();
 
             this.IsBusy = false;
