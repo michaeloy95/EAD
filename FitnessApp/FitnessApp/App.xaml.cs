@@ -62,7 +62,7 @@ namespace FitnessApp
         {
             this.InitializeComponent();
 
-            if (!User.HasLoggedIn)
+            if (User.HasLoggedIn)
             {
                 if (Device.RuntimePlatform == Device.iOS)
                     this.MainPage = new MainPage();

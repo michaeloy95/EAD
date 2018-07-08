@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:FitnessApp.Controls"
+             x:Class="FitnessApp.Views.Profile.EditProfilePage"
+             Title="Edit Profile">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Done" Command="{Binding DoneCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="{StaticResource DarkBackgroundColor}">
+            <StackLayout Padding="0,15">
+                <c:CircleImage Source="{Binding ProfileImageSource}"
+                               VerticalOptions="Start"
+                               HorizontalOptions="CenterAndExpand"
+                               WidthRequest="100"
+                               HeightRequest="100"
+                               Aspect="AspectFit"/>
+                <c:FlatButton Text="Change Profile Photo"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Center"
+                               FontSize="Medium"
+                               FontAttributes="None"
+                               TextColor="{StaticResource Primary}"
+                               Style="{StaticResource LabelBold}"
+                               BackgroundColor="Transparent"
+                               Command="{Binding ChangeProfilePhotoCommand}"/>
+                <Grid BackgroundColor="{StaticResource LightBackgroundColor}"
+                      Padding="10,0"
+                      ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           Text="Name"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           VerticalTextAlignment="Center"
+                           FontSize="Medium"/>
+                    <Entry Grid.Column="1"
+                           Grid.Row="0"
+                           Text="{Binding NameText}"
+                           Placeholder="Name"
+                           PlaceholderColor="{StaticResource SecondaryLightTextColor}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           TextChanged="Entry_TextChanged"
+                           FontSize="Medium"/>
+
+                    <Label Grid.Column="0"
+                           Grid.Row="1"
+                           Text="Birthday"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           VerticalTextAlignment="Center"
+                           FontSize="Medium"/>
+                    <Entry Grid.Column="1"
+                           Grid.Row="1"
+                           x:Name="BirthdayEntry"
+                           Text="{Binding BirthdayText}"
+                           MaxLength="10"
+                           Placeholder="Birthday"
+                           PlaceholderColor="{StaticResource SecondaryLightTextColor}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Keyboard="Numeric"
+                           TextChanged="BirthdayText_TextChanged"
+                           FontSize="Medium"/>
+
+                    <Label Grid.Column="0"
+                           Grid.Row="2"
+                           Text="Email"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           VerticalTextAlignment="Center"
+                           FontSize="Medium"/>
+                    <Entry Grid.Column="1"
+                           Grid.Row="2"
+                           Text="{Binding EmailText}"
+                           Placeholder="Email"
+                           PlaceholderColor="{StaticResource SecondaryLightTextColor}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Keyboard="Email"
+                           TextChanged="Entry_TextChanged"
+                           FontSize="Medium"/>
+
+                    <Label Grid.Column="0"
+                           Grid.Row="3"
+                           Text="Height"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           VerticalTextAlignment="Center"
+                           FontSize="Medium"/>
+                    <Entry Grid.Column="1"
+                           Grid.Row="3"
+                           Text="{Binding HeightText}"
+                           Placeholder="Height"
+                           PlaceholderColor="{StaticResource SecondaryLightTextColor}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Keyboard="Numeric"
+                           TextChanged="Entry_TextChanged"
+                           FontSize="Medium"/>
+
+                    <Label Grid.Column="0"
+                           Grid.Row="4"
+                           Text="Weight"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           VerticalTextAlignment="Center"
+                           FontSize="Medium"/>
+                    <Entry Grid.Column="1"
+                           Grid.Row="4"
+                           Text="{Binding WeightText}"
+                           Placeholder="Weight"
+                           PlaceholderColor="{StaticResource SecondaryLightTextColor}"
+                           TextColor="{StaticResource PrimaryDarkTextColor}"
+                           Keyboard="Numeric"
+                           TextChanged="Entry_TextChanged"
+                           FontSize="Medium"/>
+
+                    <StackLayout Grid.Row="5"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

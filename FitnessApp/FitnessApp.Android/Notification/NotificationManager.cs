@@ -1,12 +1,11 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Support.V4.App;
-using Microsoft.Practices.ServiceLocation;
-using FitnessApp.Interfaces;
-using FitnessApp.Droid.Receivers;
-using System;
 using FitnessApp.Common;
+using FitnessApp.Droid.Receivers;
+using FitnessApp.Interfaces;
+using Microsoft.Practices.ServiceLocation;
+using System;
 
 namespace FitnessApp.Droid.Notification
 {
@@ -57,22 +56,22 @@ namespace FitnessApp.Droid.Notification
             }
         }
         
-        public void ShowNotificationAlarm(string notificationName, string title, string message, int hour)
+        public void ShowNotificationAlarm(string notificationName, string title, string message, int hour, bool repeating = false)
         {
-            this.ShowNotificationAlarm(notificationName, title, message, false, hour, 0);
+            this.ShowNotificationAlarm(notificationName, title, message, false, hour, 0, repeating);
         }
 
-        public void ShowNotificationAlarm(string notificationName, string title, string message, bool vibrate, int hour)
+        public void ShowNotificationAlarm(string notificationName, string title, string message, bool vibrate, int hour, bool repeating = false)
         {
-            this.ShowNotificationAlarm(notificationName, title, message, vibrate, hour, 0);
+            this.ShowNotificationAlarm(notificationName, title, message, vibrate, hour, 0, repeating);
         }
 
-        public void ShowNotificationAlarm(string notificationName, string title, string message, int hour, int minute)
+        public void ShowNotificationAlarm(string notificationName, string title, string message, int hour, int minute, bool repeating = false)
         {
-            this.ShowNotificationAlarm(notificationName, title, message, false, hour, minute);
+            this.ShowNotificationAlarm(notificationName, title, message, false, hour, minute, repeating);
         }
 
-        public void ShowNotificationAlarm(string notificationName, string title, string message, bool vibrate, int hour, int minute)
+        public void ShowNotificationAlarm(string notificationName, string title, string message, bool vibrate, int hour, int minute, bool repeating = false)
         {
             Intent alarmIntent = new Intent(this.Context, typeof(AlarmReceiver));
             alarmIntent.PutExtra("alarmId", GetAlarmId(notificationName));
@@ -85,23 +84,29 @@ namespace FitnessApp.Droid.Notification
             AlarmManager alarmManager = (AlarmManager)this.Context.GetSystemService(Android.Content.Context.AlarmService);
 
             long nextAlarmMil = MillisToNextTime(hour, minute);
-            alarmManager.SetRepeating(AlarmType.RtcWakeup, Java.Lang.JavaSystem.CurrentTimeMillis() + nextAlarmMil, AlarmManager.IntervalDay, pendingIntent);
-            //alarmManager.Set(AlarmType.RtcWakeup, Java.Lang.JavaSystem.CurrentTimeMillis() + nextAlarmMil, pendingIntent);
+            if (repeating)
+            {
+                alarmManager.SetRepeating(AlarmType.RtcWakeup, Java.Lang.JavaSystem.CurrentTimeMillis() + nextAlarmMil, AlarmManager.IntervalDay, pendingIntent);
+            }
+            else
+            {
+                alarmManager.Set(AlarmType.RtcWakeup, Java.Lang.JavaSystem.CurrentTimeMillis() + nextAlarmMil, pendingIntent);
+            }
         }
 
         public void ShowNotificationAlarmMorning()
         {
-            this.ShowNotificationAlarm(Constants.NotificationAlarmMorning, "Let's Workout", "Feed your goals. Starve your doubt. Go workout today.", true, 9, 00);
+            this.ShowNotificationAlarm(Constants.NotificationAlarmMorning, "Let's Workout", "Feed your goals. Starve your doubt. Go workout today.", true, 9, 00, true);
         }
 
         public void ShowNotificationAlarmNoon()
         {
-            this.ShowNotificationAlarm(Constants.NotificationAlarmNoon, "Don't Miss Your Workout", "Remember to tick your daily workout.", true, 15, 00);
+            this.ShowNotificationAlarm(Constants.NotificationAlarmNoon, "Don't Miss Your Workout", "Remember to tick your daily workout.", true, 15, 00, true);
         }
 
-        public void ShowNotificationAlarmEvening()
+        public void ShowNotificationAlarmMeal()
         {
-            this.ShowNotificationAlarm(Constants.NotificationAlarmEvening, "How's your workout today?", "Have a rest and remember to prepare for tomorrow's workout!", true, 20, 00);
+            this.ShowNotificationAlarm(Constants.NotificationOthers, "How's your diet today?", "Remember to record your meal to keep track on your calories.", true, 19, 00);
         }
 
         private int GetAlarmId(string notificationName)
@@ -119,6 +124,11 @@ namespace FitnessApp.Droid.Notification
             if (notificationName == Constants.NotificationAlarmEvening)
             {
                 return DefaultAlarmId + 3;
+            }
+
+            if (notificationName == Constants.NotificationOthers)
+            {
+                return DefaultAlarmId + 4;
             }
 
             return DefaultAlarmId;
@@ -143,7 +153,7 @@ namespace FitnessApp.Droid.Notification
             return useWhiteIcon ? Resource.Drawable.icon_sil : Resource.Drawable.icon;
         }
 
-        private long MillisToNextTime(int hour, int minute)
+        private long MillisToNextTime(int hour = 0, int minute = 0, int second = 0)
         {
             DateTime nextDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour, minute, 0, 0);
             nextDateTime = (nextDateTime > DateTime.Now) ? nextDateTime : nextDateTime.AddDays(1);

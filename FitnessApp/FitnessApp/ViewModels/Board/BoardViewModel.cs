@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels.Board
 {
@@ -65,7 +63,7 @@ namespace FitnessApp.ViewModels.Board
 
             this.NotificationManager.ShowNotificationAlarmMorning();
             this.NotificationManager.ShowNotificationAlarmNoon();
-            this.NotificationManager.ShowNotificationAlarmEvening();
+            this.NotificationManager.ShowNotificationAlarmMeal();
         }
     }
 }
