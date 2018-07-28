@@ -25,6 +25,8 @@ namespace FitnessApp.Droid
 
             //A great place to initialize Xamarin.Insights and Dependency Services!
             CrossCurrentActivity.Current.Init(this);
+            Xamarin.Forms.DependencyService.Register<Pedometer.PedometerHelper>();
+            Xamarin.Forms.DependencyService.Register<Utilities.DeviceUtility>();
         }
 
         public override void OnTerminate()

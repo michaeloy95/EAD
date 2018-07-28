@@ -47,6 +47,7 @@ namespace FitnessApp
                 return localDatabaseFood;
             }
         }
+        
 
         public static INavigationService navigationService = null;
         public static INavigationService NavigationService
@@ -61,7 +62,7 @@ namespace FitnessApp
         public App()
         {
             this.InitializeComponent();
-
+            
             if (!User.HasLoggedIn)
             {
                 if (Device.RuntimePlatform == Device.iOS)

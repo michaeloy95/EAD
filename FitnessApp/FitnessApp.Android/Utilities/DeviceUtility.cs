@@ -556,5 +556,26 @@ namespace FitnessApp.Droid.Utilities
                 }
             }
         }
+        public bool IsKitKatWithStepCounter(Object pm)
+        {
+            int currentApiVersion = (int)Build.VERSION.SdkInt;
+            return currentApiVersion >= 19
+                && ((Android.Content.PM.PackageManager)pm).HasSystemFeature(Android.Content.PM.PackageManager.FeatureSensorStepCounter)
+                && ((Android.Content.PM.PackageManager)pm).HasSystemFeature(Android.Content.PM.PackageManager.FeatureSensorStepDetector);
+
+        }
+        public bool AndroidStepSupport
+        {
+            get
+            {
+                var pm = Application.Context.PackageManager;
+                int currentApiVersion = (int)Build.VERSION.SdkInt;
+                return currentApiVersion >= 19
+                    && pm.HasSystemFeature(Android.Content.PM.PackageManager.FeatureSensorStepCounter)
+                    && pm.HasSystemFeature(Android.Content.PM.PackageManager.FeatureSensorStepDetector);
+
+            }
+        }
+
     }
 }

@@ -103,5 +103,12 @@ namespace FitnessApp.Interfaces
         ///</summary>
         ///<param name="vibrateSpan"> Vibration time span. Default 500 ms</param>
         void Vibration(TimeSpan? vibrateSpan = null);
+
+        ///<summary>
+        /// Check OS and device compatible with step counter/pedometer sensor
+        ///</summary>
+        ///<param name="pm"> Android package manager</param>
+        bool IsKitKatWithStepCounter(Object pm);
+        bool AndroidStepSupport { get; }
     }
 }
