@@ -124,6 +124,12 @@
     <Reference Include="Plugin.Permissions.Abstractions, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.Permissions.2.2.1\lib\MonoAndroid10\Plugin.Permissions.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Settings, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Splat, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
     </Reference>
@@ -255,6 +261,11 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Notification\NotificationManager.cs" />
+    <Compile Include="Pedometer\PedometerBinder.cs" />
+    <Compile Include="Pedometer\PedometerHelper.cs" />
+    <Compile Include="Pedometer\PedometerService.cs" />
+    <Compile Include="Pedometer\PedometerServiceConnection.cs" />
+    <Compile Include="Pedometer\Receiver.cs" />
     <Compile Include="PlatformModule.cs" />
     <Compile Include="Receivers\AlarmReceiver.cs" />
     <Compile Include="Renderers\CircleImageRenderer.cs" />
