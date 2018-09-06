@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels.Board
 {
@@ -10,6 +12,27 @@ namespace FitnessApp.ViewModels.Board
         {
             get { return slideshowPosition; }
             set { SetProperty<int>(ref slideshowPosition, value); }
+        }
+
+        private bool isPedometerSupported;
+        public bool IsPedometerSupported
+        {
+            get { return isPedometerSupported; }
+            set { SetProperty<bool>(ref isPedometerSupported, value); }
+        }
+
+        private double stepProgress;
+        public double StepProgress
+        {
+            get { return stepProgress; }
+            set { SetProperty<double>(ref stepProgress, value); }
+        }
+
+        private string stepProgressText;
+        public string StepProgressText
+        {
+            get { return stepProgressText; }
+            set { SetProperty<string>(ref stepProgressText, value); }
         }
 
         private IList<string> slideshowItemsSource;
@@ -55,15 +78,31 @@ namespace FitnessApp.ViewModels.Board
                 "Notifications 10",
             };
 
-            //Device.StartTimer(TimeSpan.FromSeconds(5), () =>
-            //{
-            //    SlideshowPosition = ++SlideshowPosition % SlideshowItemsSource.Count;
-            //    return true;
-            //});
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            {
+                SlideshowPosition = ++SlideshowPosition % SlideshowItemsSource.Count;
+                return true;
+            });
 
             this.NotificationManager.ShowNotificationAlarmMorning();
             this.NotificationManager.ShowNotificationAlarmNoon();
             this.NotificationManager.ShowNotificationAlarmMeal();
+
+            Refresh();
+        }
+
+        public void Refresh()
+        {
+            var deviceUtil = DependencyService.Get<Interfaces.IDeviceUtility>();
+            this.IsPedometerSupported = deviceUtil.AndroidStepSupport;
+            var message = DependencyService.Get<Interfaces.IMessageHelper>();
+            message.ShortAlert(IsPedometerSupported.ToString());
+            if (deviceUtil.AndroidStepSupport)
+            {
+                var stepsToday = Helpers.Settings.StepsToday;
+                this.StepProgress = stepsToday / 10000;
+                this.StepProgressText = stepsToday.ToString() + "/10,000";
+            }
         }
     }
 }

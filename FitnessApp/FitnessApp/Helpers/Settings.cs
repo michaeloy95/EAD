@@ -69,11 +69,11 @@ namespace FitnessApp.Helpers
         {
             get
             {
-                return AppSettings.GetValueOrDefault(DateTime.Now.ToString("d"), 0, StepFile);
+                return AppSettings.GetValueOrDefault(DateTime.Now.ToString("d"), (long)0, StepFile);
             }
             set
             {
-                AppSettings.AddOrUpdateValue(DateTime.Now.ToString("d"), value, StepFile);
+                AppSettings.AddOrUpdateValue(DateTime.Now.ToString("d"), (long)value, StepFile);
             }
         }
         /// <summary>
@@ -90,7 +90,7 @@ namespace FitnessApp.Helpers
                 Dictionary<DateTime, Int64> result = new Dictionary<DateTime, Int64>();
                 for (var dt = entryStartDate; dt <= DateTime.Parse(shortDateString); dt = dt.AddDays(1))
                 {
-                    result.Add(dt, AppSettings.GetValueOrDefault(dt.ToString("d"), 0, StepFile));
+                    result.Add(dt, AppSettings.GetValueOrDefault(dt.ToString("d"), (long)0, StepFile));
                 }
                 return result;
             }
@@ -111,7 +111,7 @@ namespace FitnessApp.Helpers
                 Dictionary<DateTime, Int64> result = new Dictionary<DateTime, Int64>();
                 for (var dt = startDate; dt <= DateTime.Parse(endDateString); dt = dt.AddDays(1))
                 {
-                    result.Add(dt, AppSettings.GetValueOrDefault(dt.ToString("d"), 0, StepFile));
+                    result.Add(dt, AppSettings.GetValueOrDefault(dt.ToString("d"), (long)0, StepFile));
                 }
                 return result;
             }

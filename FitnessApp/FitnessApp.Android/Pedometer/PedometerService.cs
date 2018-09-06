@@ -33,7 +33,7 @@ namespace FitnessApp.Droid.Pedometer
                 newSteps = value;
                 OnPropertyChanged("NewSteps");
                 //Update step entry data on the file
-                FitnessApp.Helpers.Settings.StepsToday = FitnessApp.Helpers.Settings.StepsToday + value;
+                FitnessApp.Helpers.Settings.StepsToday = (long)FitnessApp.Helpers.Settings.StepsToday + (long)value;
             }
         }
 

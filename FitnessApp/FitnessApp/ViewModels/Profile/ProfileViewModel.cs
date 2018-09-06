@@ -1,4 +1,4 @@
-﻿using FitnessApp.Views.Meal;
+using FitnessApp.Views.Meal;
 using FitnessApp.Views.Profile;
 using System;
 using System.Collections.ObjectModel;
@@ -104,6 +104,23 @@ namespace FitnessApp.ViewModels.Profile
 
             this.MealList = new ObservableCollection<Models.Meal>(await this.LocalDatabaseMeal.GetItemsAsync());
             this.MealListIsEmpty = this.MealList == null || this.MealList.Count == 0;
+            /*
+            var deviceUtil = DependencyService.Get<Interfaces.IDeviceUtility>();
+            if (deviceUtil.AndroidStepSupport)
+            {
+                var message = DependencyService.Get<Interfaces.IMessageHelper>();
+                var pedometer = DependencyService.Get<Interfaces.IPedometerHelper>();
+                //message.ShortAlert(pedometer.GetTotalStep().ToString());
+                var stepsToday = Helpers.Settings.StepsToday.ToString();
+                string getStepsCountToDate = "";
+                if (Helpers.Settings.GetStepsCountToDate(DateTime.Now.ToString("d")) == null)
+                    getStepsCountToDate = 0.ToString();
+                else
+                    getStepsCountToDate = Helpers.Settings.GetStepsCountToDate(DateTime.Now.ToString("d")).Skip(1).Sum(x => x.Value).ToString();
+                message.ShortAlert(DateTime.Now.ToString("d")+": "+
+                    stepsToday+" steps; Total: " + getStepsCountToDate + " steps");
+            }
+            */
         }
 
         private void EditProfile()
