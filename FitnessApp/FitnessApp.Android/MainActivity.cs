@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
@@ -58,6 +59,7 @@ namespace FitnessApp.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
             CarouselViewRenderer.Init();
+            //UserDialogs.Init(this);
 
             RegisterServices();
             StartPedometerService();

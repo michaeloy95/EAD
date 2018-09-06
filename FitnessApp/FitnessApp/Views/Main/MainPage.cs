@@ -1,6 +1,7 @@
 ﻿using FitnessApp.Views.Board;
 using FitnessApp.Views.Food;
 using FitnessApp.Views.Profile;
+using FitnessApp.Views.Settings;
 using Xamarin.Forms;
 
 namespace FitnessApp.Views
@@ -9,7 +10,7 @@ namespace FitnessApp.Views
     {
         public MainPage()
         {
-            Page itemsPage, profilePage, foodPage;
+            Page itemsPage, profilePage, foodPage, settingsPage;
             
             switch (Device.RuntimePlatform)
             {
@@ -30,6 +31,11 @@ namespace FitnessApp.Views
                     {
                         Title = "Food"
                     };
+
+                    settingsPage = new NavigationPage(new SettingsPage())
+                    {
+                        Title = "Settings"
+                    };
                     break;
                 default:
                     itemsPage = new BoardPage()
@@ -46,12 +52,18 @@ namespace FitnessApp.Views
                     {
                         Title = "Food"
                     };
+
+                    settingsPage = new SettingsPage()
+                    {
+                        Title = "Settings"
+                    };
                     break;
             }
 
             Children.Add(itemsPage);
             Children.Add(profilePage);
             Children.Add(foodPage);
+            Children.Add(settingsPage);
 
             this.BarTextColor = Color.White;
             this.Icon = "icon_sil.png";

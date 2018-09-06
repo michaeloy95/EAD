@@ -27,70 +27,78 @@ namespace FitnessApp.Data
 
         private const string RDIKey = "RDI";
 
+        private const string ImageSourceKey = "ImageSource";
+
         public bool HasLoggedIn
         {
             get;
-            private set;
+            set;
         }
 
         public string ID
         {
             get;
-            private set;
+            set;
         }
 
         public string Username
         {
             get;
-            private set;
+            set;
         }
 
         public string Password
         {
             get;
-            private set;
+            set;
         }
 
         public string Name
         {
             get;
-            private set;
+            set;
         }
 
         public string Email
         {
             get;
-            private set;
+            set;
         }
 
         public DateTime Birthdate
         {
             get;
-            private set;
+            set;
         }
 
         public double Height
         {
             get;
-            private set;
+            set;
         }
 
         public double Weight
         {
             get;
-            private set;
+            set;
         }
 
         public int BMI
         {
             get;
-            private set;
+            set;
         }
 
         public int RDI
         {
             get;
-            private set;
+            set;
+        }
+
+        public string ImageSource
+        {
+            get;
+            set;
         }
 
         public bool FoodIsLoaded
@@ -108,6 +116,37 @@ namespace FitnessApp.Data
         public User()
         {
             this.Initialise();
+        }
+
+        public User(User user)
+        {
+            this.HasLoggedIn = true;
+
+            this.ID = user.ID;
+
+            this.Username = user.Username;
+
+            this.Password = user.Password;
+
+            this.Email = user.Email;
+
+            this.Name = user.Name;
+
+            this.Birthdate = user.Birthdate;
+
+            this.Height = user.Height;
+
+            this.Weight = user.Weight;
+
+            this.BMI = user.BMI;
+
+            this.RDI = user.RDI;
+
+            this.ImageSource = user.ImageSource;
+
+            this.FoodIsLoaded = user.FoodIsLoaded;
+
+            this.MealIsLoaded = user.MealIsLoaded;
         }
 
         public void Initialise()
@@ -162,6 +201,10 @@ namespace FitnessApp.Data
                                     ? (int)Application.Current.Properties[RDIKey]
                                     : 0;
 
+            this.ImageSource = Application.Current.Properties.ContainsKey(ImageSourceKey)
+                                    ? (string)Application.Current.Properties[ImageSourceKey]
+                                    : "";
+
             this.FoodIsLoaded = false;
 
             this.MealIsLoaded = false;
@@ -176,6 +219,31 @@ namespace FitnessApp.Data
             {
                 this.RemoveUser();
             }
+        }
+
+        public void SaveUserDetails()
+        {
+            Application.Current.Properties[IDKey] = this.ID;
+            
+            Application.Current.Properties[UsernameKey] = this.Username;
+
+            Application.Current.Properties[PasswordKey] = this.Password;
+
+            Application.Current.Properties[EmailKey] = this.Email;
+
+            Application.Current.Properties[NameKey] = this.Name;
+
+            Application.Current.Properties[BirthdateKey] = this.Birthdate;
+
+            Application.Current.Properties[HeightKey] = this.Height;
+
+            Application.Current.Properties[WeightKey] = this.Weight;
+
+            Application.Current.Properties[RDIKey] = this.RDI;
+            
+            Application.Current.Properties[BMIKey] = this.BMI;
+
+            Application.Current.Properties[ImageSourceKey] = this.ImageSource;
         }
 
         private void RemoveUser()
@@ -238,6 +306,12 @@ namespace FitnessApp.Data
             if (Application.Current.Properties.ContainsKey(BMIKey))
             {
                 Application.Current.Properties.Remove(BMIKey);
+            }
+
+            this.ImageSource = "";
+            if (Application.Current.Properties.ContainsKey(ImageSourceKey))
+            {
+                Application.Current.Properties.Remove(ImageSourceKey);
             }
 
             this.FoodIsLoaded = false;
