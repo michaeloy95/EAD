@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace FitnessApp.ViewModels.Board
 {
@@ -76,20 +78,20 @@ namespace FitnessApp.ViewModels.Board
                 "Notifications 10",
             };
 
-            //Device.StartTimer(TimeSpan.FromSeconds(5), () =>
-            //{
-            //    SlideshowPosition = ++SlideshowPosition % SlideshowItemsSource.Count;
-            //    return true;
-            //});
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            {
+                SlideshowPosition = ++SlideshowPosition % SlideshowItemsSource.Count;
+                return true;
+            });
 
             this.NotificationManager.ShowNotificationAlarmMorning();
             this.NotificationManager.ShowNotificationAlarmNoon();
-            this.NotificationManager.ShowNotificationAlarmEvening();
+            this.NotificationManager.ShowNotificationAlarmMeal();
 
             Refresh();
         }
 
-        public async void Refresh()
+        public void Refresh()
         {
             var deviceUtil = DependencyService.Get<Interfaces.IDeviceUtility>();
             this.IsPedometerSupported = deviceUtil.AndroidStepSupport;
