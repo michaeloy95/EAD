@@ -11,6 +11,7 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- Slideshow panel -->
@@ -132,6 +133,29 @@
                            FontSize="Small"
                            HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
+            </Grid>
+            <Grid Grid.Row="3"
+                  IsVisible="{Binding IsPedometerSupported}"
+                  Margin="15,20,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Text="Today's step"
+                       Grid.Row="0"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Style="{StaticResource LabelBold}"
+                       TextColor="{StaticResource SecondaryDarkTextColor}"/>
+                <ProgressBar Grid.Row="1"
+                             Progress="{Binding StepProgress}"/>
+                <Label Grid.Row="2"
+                       Text="{Binding StepProgressText}"
+                       FontAttributes="None"
+                       FontSize="Small"
+                       HorizontalOptions="CenterAndExpand"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

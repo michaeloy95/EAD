@@ -55,6 +55,7 @@ namespace FitnessApp.ViewModels.Profile
         {
             this.MealList = new ObservableCollection<Models.Meal>(await this.LocalDatabaseMeal.GetItemsAsync());
             this.MealListIsEmpty = this.MealList == null || this.MealList.Count == 0;
+            /*
             var deviceUtil = DependencyService.Get<Interfaces.IDeviceUtility>();
             if (deviceUtil.AndroidStepSupport)
             {
@@ -70,6 +71,7 @@ namespace FitnessApp.ViewModels.Profile
                 message.ShortAlert(DateTime.Now.ToString("d")+": "+
                     stepsToday+" steps; Total: " + getStepsCountToDate + " steps");
             }
+            */
         }
 
         private void AddMeal()
