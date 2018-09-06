@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:FitnessApp.Controls"
              xmlns:vc="clr-namespace:FitnessApp.ViewCells"
-             xmlns:vm="clr-namespace:FitnessApp.ViewModels.Profile;"
              x:Class="FitnessApp.Views.Profile.ProfilePage"
              Title="Profile">
     <Grid x:Name="GridLayout"

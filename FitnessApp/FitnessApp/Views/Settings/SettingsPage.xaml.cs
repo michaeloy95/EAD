@@ -1,10 +1,5 @@
 ﻿using FitnessApp.Models;
 using FitnessApp.ViewModels.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,7 +21,7 @@ namespace FitnessApp.Views.Settings
             };
             this.BindingContext = this.ViewModel;
         }
-        
+
         private void SettingsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as SettingsMenu;
