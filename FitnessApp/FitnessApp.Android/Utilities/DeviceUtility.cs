@@ -366,7 +366,7 @@ namespace FitnessApp.Droid.Utilities
 
                // RaygunClient.Current?.SendInBackground(new Exception("LE Clerk metric tracking exception."), new[] { "Metric", "Tracking" }, info);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                // RaygunClient.Current?.SendInBackground(ex);
             }

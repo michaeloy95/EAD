@@ -149,7 +149,7 @@ namespace FitnessApp.Droid
                 var service = new Intent(this, typeof(Pedometer.PedometerService));
                 var componentName = StartService(service);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
